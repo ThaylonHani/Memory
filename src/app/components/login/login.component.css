@@ -1,0 +1,114 @@
+@keyframes spin {
+  to {
+    transform: rotate(360deg)
+  }
+}
+#login-container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 4rem;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom right, #0F2027, #203A43, #2C5364);
+  color:  #ffffff;
+  cursor: default;
+}
+.login-span {
+  /* position: absolute; */
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 999%;
+  border: 2px solid #ffffff;
+  padding: 4rem;
+  user-select: none;
+}
+.login-span:nth-child(1){
+  align-self: baseline;
+  margin-left: 2rem ;
+  border-color: rgba(140, 64, 47, 1);
+  color: rgba(140, 64, 47, 1);
+}
+.login-span:nth-child(2){
+  align-self: end ;
+  margin-right: 2rem ;
+  border-color:rgba(191, 74, 32, 1);
+  color: rgba(191, 74, 32, 1);
+}
+.login-span:nth-child(3){
+  align-self: start ;
+  margin-left: 2rem;
+  border-color: rgba(242, 80, 21, 1);
+  color: rgba(242, 80, 21, 1);
+}
+.login-span:nth-child(4){
+  align-self: end;
+  margin-right: 2rem;
+  border-color:rgba(59, 83, 114, 1);;
+  color: rgb(72, 101, 138);;
+}
+.spans-section {
+  width: 100%;
+  flex-direction: column;
+  position: relative;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+.buttons-container {
+  display: flex;
+  width:80%;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+.guest-btn {
+  width: 220px;
+  padding: 0.5rem;
+  border: 0;
+  border-radius: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+}
+.buttons-container a {
+  color: #ffffff;
+  font-weight: 100;
+  font-size: small;
+}
+.loading-container {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+  border-radius: 1rem;
+  width: 220px;
+  height:32px;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: #1a73e8;
+}
+
+
+.loading-container span {
+  content: '';
+  width: 8px;
+  height: 8px;
+  padding: 0.3rem;
+  border-radius:999%;
+  border: 2px solid #ffffff;
+  border-color: #ffffff #ffffff transparent ;
+  animation: spin 1s infinite linear  ;
+}

@@ -1,0 +1,28 @@
+<div id="login-container">
+  <section class="spans-section" >
+    <span class="login-span">
+      <strong>Compartilhe</strong>
+    </span>
+    <span class="login-span">
+      <strong>Capture lembranças</strong>
+    </span>
+    <span class="login-span">
+      <strong>Reviva momentos</strong>
+    </span>
+    <span class="login-span">
+      <strong>Desfrute do passado</strong>
+    </span>
+  </section>
+  <section class="buttons-container">
+    <div *ngIf="loading; else notLoading"  class="loading-container">
+      <span>
+      </span>
+    </div>
+    <ng-template #notLoading>
+      <asl-google-signin-button (click)="handleLogin()" type="standard" size="medium" shape="pill" text="signin_with" [width]="200" theme="filled_blue" logo_alignment="center" >
+      </asl-google-signin-button>
+    </ng-template>
+      <button class="guest-btn">Login como visitante</button>
+      <a href="/createAccout">Criar conta</a>
+  </section>
+</div>

@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id":"103752348484869844712",
+      "token": "1",
+      "firstName": "John",
+      "lastName": "Doe",
+      "provider": "memory"
+    },
+    {
+      "id":"103752348484869844711",
+      "token": "2",
+      "firstName": "Mary",
+      "lastName": "Doe",
+      "provider": "memory"
+    }
+  ]
+}
