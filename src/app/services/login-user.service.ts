@@ -1,22 +1,27 @@
-import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginUserService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private router: Router) {}
 
-  private user?: User;
+  apiUrl = "http://localhost:4000/users";
 
-  setUser(user: any) {
-    this.user = user;
+  setUser(user: User) {
+    localStorage.setItem('token', user.idToken);
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
-  getUser() {
-    return this.user;
+  getUser(idToken: string) :Observable<User[]> {
+    return this.http.get<User[]>(this.apiUrl + `/?idToken=${idToken}`);
+  }
+  confirmEmail(email: string): Observable<User>{
+    return this.http.get<User>(this.apiUrl + `/?email=${email}`);
   }
 
 }

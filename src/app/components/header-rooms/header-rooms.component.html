@@ -1,0 +1,12 @@
+<header>
+  <div class="menu">
+      <button class="addRoom">
+        <img src="../../../assets/addIcon.svg" alt="Add new room icon" id="AddIcon">
+      </button>
+      <div class="user" (click)="handleMenu()" (mouseenter)="handleBypass()" (mouseleave)="handleBypass()" >
+        <img src="../../../assets/userIcon.svg" alt="User menu" id="UserIcon">
+        <span class="user-span" [ngStyle]="bypass ? {'display': 'inherit'} : {'display': 'none'}"></span>
+        <span class="user-span" [ngStyle]="!bypass ? {'display': 'inherit'} : {'display': 'none'}"></span>
+      </div>
+    </div>
+</header>

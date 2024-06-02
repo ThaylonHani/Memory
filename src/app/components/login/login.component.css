@@ -3,67 +3,10 @@
     transform: rotate(360deg)
   }
 }
-#login-container {
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  padding: 2rem;
-  gap: 4rem;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(to bottom right, #0F2027, #203A43, #2C5364);
-  color:  #ffffff;
-  cursor: default;
-}
-.login-span {
-  /* position: absolute; */
-  width: 100px;
-  height: 100px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 999%;
-  border: 2px solid #ffffff;
-  padding: 4rem;
-  user-select: none;
-}
-.login-span:nth-child(1){
-  align-self: baseline;
-  margin-left: 2rem ;
-  border-color: rgba(140, 64, 47, 1);
-  color: rgba(140, 64, 47, 1);
-}
-.login-span:nth-child(2){
-  align-self: end ;
-  margin-right: 2rem ;
-  border-color:rgba(191, 74, 32, 1);
-  color: rgba(191, 74, 32, 1);
-}
-.login-span:nth-child(3){
-  align-self: start ;
-  margin-left: 2rem;
-  border-color: rgba(242, 80, 21, 1);
-  color: rgba(242, 80, 21, 1);
-}
-.login-span:nth-child(4){
-  align-self: end;
-  margin-right: 2rem;
-  border-color:rgba(59, 83, 114, 1);;
-  color: rgb(72, 101, 138);;
-}
-.spans-section {
-  width: 100%;
-  flex-direction: column;
-  position: relative;
-  display: flex;
-  justify-content:center;
-  align-items: center;
-}
 .buttons-container {
   display: flex;
   width:80%;
+  align-self: center;
   flex-direction: column;
   gap: 1.5rem;
   align-items: center;
@@ -76,7 +19,7 @@
   font-weight: bold;
   cursor: pointer;
   background-color: transparent;
-  border: 2px solid #ffffff;
+  border: 2px solid whitesmoke ;
   color: #ffffff;
 }
 .buttons-container a {
@@ -98,11 +41,19 @@
   left: 0;
   right: 0;
   margin: auto;
+  border: 2px solid whitesmoke;
+}
+.loading-container:nth-child(1){
   background-color: #1a73e8;
+  border: none;
 }
 
+#errMessage {
+  align-self: center;
+  color: lightgray;
+}
 
-.loading-container span {
+.loading-container .loading {
   content: '';
   width: 8px;
   height: 8px;
@@ -111,4 +62,154 @@
   border: 2px solid #ffffff;
   border-color: #ffffff #ffffff transparent ;
   animation: spin 1s infinite linear  ;
+}
+
+.login-modal
+{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-color: #0F2027;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+.login-modal span
+{
+  position: relative;
+  display: block;
+  width: calc(6.25vw - 2px);
+  height: calc(6.25vw - 2px);
+  background: #181818;
+  z-index: 2;
+  transition: 1.5s;
+}
+.login-modal span:hover
+{
+  background: #0f0;
+  transition: 0s;
+}
+
+.login-modal .signin
+{
+  position: absolute;
+  width: 400px;
+  background: linear-gradient(to bottom right, #0F2027, #203A43, #2C5364);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  border-radius: 4px;
+  box-shadow: 0 15px 35px rgba(0,0,0,9);
+}
+.login-modal .signin .content
+{
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+}
+.login-modal .signin .content h2
+{
+  background: linear-gradient(to right, #F25116, #BF4B21);
+  background-clip: text;
+  color: transparent ;
+}
+.login-modal .signin .content .form
+{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.login-modal .signin .content .form .inputBox
+{
+  position: relative;
+  width: 100%;
+}
+.login-modal .signin .content .form .inputBox input
+{
+  position: relative;
+  width: 100%;
+  background: #333;
+  border: none;
+  outline: none;
+  padding: 25px 10px 7.5px;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1em;
+}
+.login-modal .signin .content .form .inputBox i
+{
+  position: absolute;
+  left: 0;
+  padding: 15px 10px;
+  font-style: normal;
+  color: #aaa;
+  transition: 0.5s;
+  pointer-events: none;
+}
+.signin .content .form .inputBox input:focus ~ i,
+.signin .content .form .inputBox input:valid ~ i
+{
+  transform: translateY(-7.5px);
+  font-size: 0.8em;
+  color: #fff;
+}
+.signin .content .form .links
+{
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.signin .content .form .links a
+{
+  color: #fff;
+  text-decoration: none;
+}
+.signin .content .form .links .signup
+{
+  background: linear-gradient(to right, #F25116, #BF4B21);
+  background-clip:text ;
+  color: transparent;
+  font-weight: 600;
+}
+.signin .content .form .inputBox input[type="submit"]
+{
+  padding: 10px;
+  background: #0f0;
+  color: #000;
+  font-weight: 600;
+  font-size: 1.35em;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+input[type="submit"]:active
+{
+  opacity: 0.6;
+}
+@media (max-width: 900px)
+{
+  .login-modal span
+  {
+    width: calc(10vw - 2px);
+    height: calc(10vw - 2px);
+  }
+}
+@media (max-width: 600px)
+{
+  .login-modal span
+  {
+    width: calc(20vw - 2px);
+    height: calc(20vw - 2px);
+  }
 }

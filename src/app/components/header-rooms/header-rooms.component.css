@@ -1,0 +1,96 @@
+@keyframes bypassUser {
+  0%{
+    border-color: transparent ;
+  }
+  25%{
+    border-top-color: whitesmoke ;
+    transform: rotate(90deg);
+  }
+  50%{
+    border-right-color: whitesmoke;
+  }
+  75%{
+    border-left-color: whitesmoke ;
+    transform: rotate(180deg);
+  }
+  100%{
+    border-color: whitesmoke;
+  }
+}
+
+@keyframes bypassUserLeave {
+  0%{
+    border-color: whitesmoke;
+  }
+  25%{
+    border-left-color: transparent ;
+    transform: rotate(-90deg);
+
+  }
+  50%{
+    border-bottom-color: transparent;
+  }
+  75%{
+    border-right-color: transparent;
+    transform: rotate(-180deg);
+  }
+  100%{
+    border-color:transparent ;
+  }
+
+}
+
+header{
+  display: flex;
+  position: relative;
+  width: 100%;
+  justify-content: end;
+  background-color: #15141A;
+}
+.menu {
+  display: flex;
+  width: 30%;
+  padding: 1rem;
+  align-items: baseline;
+  justify-content: end;
+  gap: 1rem;
+  background-color: #15141A;
+  z-index: 2;
+}
+button {
+  background-color: transparent ;
+  border-radius: 0.4rem;
+}
+#AddIcon, #UserIcon {
+  width: 24px;
+  border-radius: 0.3rem;
+}
+#AddIcon{
+  transition: all 0.3s linear;
+}
+#AddIcon:hover{
+  transform: translateY(-0.1rem);
+}
+.user{
+  position: relative;
+  display: flex;
+  z-index: 2;
+}
+.user-span{
+  position: absolute;
+  border-width: 2px ;
+  border-color:transparent ;
+  border-style: solid;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  content: '';
+  border-radius: 999%;
+}
+.user-span:nth-child(2){
+  animation:bypassUser 0.3s forwards linear
+}
+.user-span:nth-child(3){
+  animation:bypassUserLeave 0.3s forwards linear
+}

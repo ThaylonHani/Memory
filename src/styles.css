@@ -2,8 +2,11 @@
 *{
   margin: 0;
   padding: 0;
+  border:none;
   box-sizing: border-box;
 }
-html{
-  background: linear-gradient(to bottom right, #0F2027, #203A43, #2C5364);
+html, body{
+  background: linear-gradient(to bottom right, #0F2027, #203A43, #2C5364) no-repeat;
+  width: 100%;
+  min-height: 100vh;
 }

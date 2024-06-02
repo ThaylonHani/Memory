@@ -1,0 +1,57 @@
+<div class="createAccount-container">
+  <div class="createAccount-content">
+    <section class="createAccount-intro">
+      <h1>
+        Welcome to memories
+      </h1>
+      <strong>
+        Reviva momentos, compartilhe memórias: seu álbum de fotos digitais
+      </strong>
+    </section>
+
+    <form class="createAccount-form"  >
+
+        <label for="emailUser">
+          Email:
+          <p *ngIf="emailErr" class="inputError">
+            Email invalid
+          </p>
+        </label>
+        <input type="text" name="emailUser" id="emailUser" placeholder="Enter your email" [(ngModel)] = "inputEmail" minlength="20"  >
+
+        <label for="nameUser">
+          Name:
+          <p *ngIf="nameErr" class="inputError">
+            Name invalid
+            </p>
+        </label>
+        <input type="text" name="nameUser" id="nameUser" placeholder="Enter your name" [(ngModel)] = "inputName" form>
+
+        <label for="passwordUser">
+          Password:
+        </label>
+        <input type="password" name="passwordUser" id="passwordUser" placeholder="Enter your password" [(ngModel)] = "inputPass">
+
+        <label for="passwordConfirmUser">
+          Confirm password:
+          <p *ngIf="passwordErr" class="inputError">
+          password wrong
+          </p>
+        </label>
+        <input type="password" name="passwordConfirmUser" id="passwordConfirmUser" placeholder="Confirm your password" [(ngModel)] = "inputConfirmPass">
+        <div class="createAccount-buttons" >
+          <a href="login" id="exit-btn">Signin</a>
+          <asl-google-signin-button (click)="handleCreateWithGoogle()" type="standard" size="medium" shape="pill" text="signup_with" [width]="200" theme="filled_blue" logo_alignment="center" >
+          </asl-google-signin-button>
+          <div id="create-btn" *ngIf="loading; else createButton">
+            <span>Carregando</span>
+          </div>
+          <ng-template #createButton>
+            <button type="submit" id="create-btn" (click) = "createAccount()"  >
+              Create
+            </button>
+          </ng-template>
+        </div>
+    </form>
+  </div>
+</div>

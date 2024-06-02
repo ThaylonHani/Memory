@@ -1,0 +1,29 @@
+#memories {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.memories-content {
+  padding: 1rem;
+  display: flex;
+  width: 100% ;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.memories-content li {
+  width: 70%;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+.memories-content li img {
+  width: 100px;
+  border-radius: 0.3rem;
+}
+.memories-content li h1 {
+  color: whitesmoke;
+  font-size: 1.3rem;
+  text-decoration: underline;
+}

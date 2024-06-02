@@ -1,28 +1,49 @@
 <div id="login-container">
-  <section class="spans-section" >
-    <span class="login-span">
-      <strong>Compartilhe</strong>
-    </span>
-    <span class="login-span">
-      <strong>Capture lembranças</strong>
-    </span>
-    <span class="login-span">
-      <strong>Reviva momentos</strong>
-    </span>
-    <span class="login-span">
-      <strong>Desfrute do passado</strong>
-    </span>
-  </section>
-  <section class="buttons-container">
-    <div *ngIf="loading; else notLoading"  class="loading-container">
-      <span>
-      </span>
+  <section class="login-modal">
+    <div class="signin">
+      <div class="content">
+        <h2>Sign In</h2>
+        <div class="form">
+          <strong *ngIf="err" id="errMessage">
+            Username or password incorrect!
+          </strong>
+          <div class="inputBox">
+            <input type="text" required [(ngModel)] = 'inputName' /> <i>Username</i>
+          </div>
+
+          <div class="inputBox">
+            <input type="password" required [(ngModel)] = 'inputPass' /> <i>Password</i>
+          </div>
+          <div class="links">
+            <a class="signup" href="create_account">Signup</a>
+          </div>
+
+          <section class="buttons-container">
+            <div *ngIf="loadingWithGoogle; else notLoadingGoogle" class="loading-container">
+              <span class="loading"> </span>
+            </div>
+            <ng-template #notLoadingGoogle>
+              <asl-google-signin-button
+                (click)="handleLoginGoogle()"
+                type="standard"
+                size="medium"
+                shape="pill"
+                text="signin_with"
+                [width]="200"
+                theme="filled_blue"
+                logo_alignment="center"
+              >
+              </asl-google-signin-button>
+            </ng-template>
+            <div *ngIf="loading; else notLoading" class="loading-container">
+              <span class="loading"> </span>
+            </div>
+            <ng-template #notLoading>
+              <button class="guest-btn" (click)="handleLogin()">Login</button>
+            </ng-template>
+          </section>
+        </div>
+      </div>
     </div>
-    <ng-template #notLoading>
-      <asl-google-signin-button (click)="handleLogin()" type="standard" size="medium" shape="pill" text="signin_with" [width]="200" theme="filled_blue" logo_alignment="center" >
-      </asl-google-signin-button>
-    </ng-template>
-      <button class="guest-btn">Login como visitante</button>
-      <a href="/createAccout">Criar conta</a>
   </section>
 </div>

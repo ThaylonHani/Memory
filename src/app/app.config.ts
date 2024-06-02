@@ -16,12 +16,12 @@ export const appConfig: ApplicationConfig = {
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '1040985107488-5iefdpp9kvgrbol520th3gpl947qrfdk.apps.googleusercontent.com'
+              ''
             )
           },
         ],
         onError: (err) => {
-          console.error(err);
+          console.error("esse é o erro: " + err);
         }
       } as SocialAuthServiceConfig,
     }
