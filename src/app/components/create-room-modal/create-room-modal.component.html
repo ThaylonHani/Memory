@@ -1,10 +1,29 @@
-<div class="createRoomModal">
+<div class="createRoomModal ">
   <section class="modalButtons">
-    <button>
+    <button [ngClass]="{'selected' : !animationButton }" (click)="handleCreateButton()" >
       Create Room
     </button>
-    <button>
+    <button [ngClass]="{'selected' : animationButton }" (click)="handleEnterButton()">
       Enter Room
+    </button>
+  </section>
+  <section class="createRoom" >
+    <div class="inputBox">
+      <input type="text" /> <i>Room Name</i>
+    </div>
+    <div class="inputBox">
+      <input type="text" /> <i>Room password</i>
+    </div>
+  </section>
+  <section class="enterRoom" >
+
+  </section>
+  <section class="modalButtonsAction">
+    <button class="actionButton">
+      Criar
+    </button>
+    <button>
+      Voltar
     </button>
   </section>
 </div>

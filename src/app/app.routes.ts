@@ -8,7 +8,8 @@ import { userAuthenticatedGuard } from './services/guards/user-authenticated.gua
 export const routes: Routes = [
   {
     path: '',
-    component: AppComponent,
+    pathMatch: 'full',
+    redirectTo: 'login'
   },
   {
     path: 'login',

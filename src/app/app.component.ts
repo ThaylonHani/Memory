@@ -12,12 +12,7 @@ import { ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet } fr
 export class AppComponent {
   title = 'memory';
 
-  // user!: any;
-  loggedIn!: boolean;
   constructor() { }
 
-  ngOnInit() {
-    // this.user = userData?.extras.state;
-    // this.user == undefined ? this.router.navigate(['/login']) : false;
-  }
+  ngOnInit() {}
 }

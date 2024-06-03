@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header-rooms',
@@ -11,7 +11,6 @@ import { Component } from '@angular/core';
 export class HeaderRoomsComponent {
   hamburger: boolean = false;
   bypass: boolean = false;
-
 
   handleMenu() {
     this.hamburger = !this.hamburger;
