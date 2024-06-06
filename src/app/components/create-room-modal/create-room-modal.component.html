@@ -1,28 +1,36 @@
 <div class="createRoomModal ">
   <section class="modalButtons">
-    <button [ngClass]="{'selected' : !animationButton }" (click)="handleCreateButton()" >
+    <button [ngClass]="{'selected' : !enterRoom }" (click)="handleCreateButton()" >
       Create Room
     </button>
-    <button [ngClass]="{'selected' : animationButton }" (click)="handleEnterButton()">
+    <button [ngClass]="{'selected' : enterRoom }" (click)="handleEnterButton()">
       Enter Room
     </button>
   </section>
-  <section class="createRoom" >
+  <section class="createRoom" *ngIf="!enterRoom">
     <div class="inputBox">
-      <input type="text" /> <i>Room Name</i>
+      <input type="text" required /> <i>Room Name</i>
     </div>
     <div class="inputBox">
-      <input type="text" /> <i>Room password</i>
+      <input type="text" required /> <i>Room password</i>
+    </div>
+    <div class="inputBox">
+      <input type="text" required /> <i>Confirm password</i>
     </div>
   </section>
-  <section class="enterRoom" >
-
+  <section class="enterRoom" *ngIf="enterRoom" >
+    <div class="inputBox">
+      <input type="text" required /> <i>Id room</i>
+    </div>
+    <div class="inputBox">
+      <input type="text" required /> <i>Password room</i>
+    </div>
   </section>
   <section class="modalButtonsAction">
-    <button class="actionButton">
-      Criar
+    <button class="actionButton" >
+      {{enterRoom ? 'Entrar' : 'Criar'}}
     </button>
-    <button>
+    <button (click)="handleCloseModal.emit(false)">
       Voltar
     </button>
   </section>

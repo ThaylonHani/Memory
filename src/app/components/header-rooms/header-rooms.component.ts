@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header-rooms',
@@ -11,12 +11,23 @@ import { Component, Input, Output } from '@angular/core';
 export class HeaderRoomsComponent {
   hamburger: boolean = false;
   bypass: boolean = false;
-
+  modal: boolean = false;
   handleMenu() {
     this.hamburger = !this.hamburger;
   }
   handleBypass() {
     this.bypass = !this.bypass
-    console.log("Entrou")
   }
+  @Output() handleOpenModal = new EventEmitter<boolean>();
+
+  handleModalRooms() {
+    if (this.modal) {
+      this.handleOpenModal.emit(false);
+      this.modal = false;
+    } else {
+      this.handleOpenModal.emit(true);
+      this.modal = true;
+    }
+  }
+
 }

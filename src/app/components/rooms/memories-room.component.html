@@ -1,5 +1,5 @@
 <div>
-  <app-header-rooms/>
+  <app-header-rooms (handleOpenModal)="openModal($event)"/>
   <app-list-rooms/>
-  <app-create-room-modal/>
+  <app-create-room-modal *ngIf="modal" (handleCloseModal)="closeModal($event)"/>
 </div>

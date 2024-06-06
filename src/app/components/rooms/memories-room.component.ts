@@ -18,8 +18,17 @@ export class MemoriesRoomComponent implements OnInit {
 
   constructor(private logService: LoginUserService) {  };
 
+  modal: boolean = false;
+
   user : User = JSON.parse(localStorage.getItem('user') || '') ;
   createRoom: boolean = false;
   ngOnInit() { }
+
+  openModal(modal: boolean) {
+    this.modal = modal;
+  }
+  closeModal(modal: boolean) {
+    this.modal = modal;
+  }
 
 }
