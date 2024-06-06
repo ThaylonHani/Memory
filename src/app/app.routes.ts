@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MemoriesRoomComponent } from './components/rooms/memories-room.component';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { userAuthenticatedGuard } from './services/guards/user-authenticated.guard';
+import { UserComponent } from './components/user/user.component';
 
 export const routes: Routes = [
   {
@@ -22,6 +23,11 @@ export const routes: Routes = [
   {
     path: 'rooms',
     component: MemoriesRoomComponent,
+    canActivate: [userAuthenticatedGuard]
+  },
+  {
+    path: 'user',
+    component: UserComponent,
     canActivate: [userAuthenticatedGuard]
   }
 ];
