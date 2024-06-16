@@ -9,9 +9,9 @@ export class CryptoService {
   constructor() { }
 
   setCrypto(password : string, name: string ) : string {
-    const scripted = CryptoJS.AES.encrypt(password, name).toString();
+    const encrypt = CryptoJS.AES.encrypt(password, name).toString();
 
-    return scripted
+    return encrypt
   }
 
   decrypt(pass: string, name:  string): string{
@@ -21,5 +21,14 @@ export class CryptoService {
     return decrypt;
   }
 
+  confirmCrypto(encrypt : string, decrypt : string, name : string): boolean {
+    const newEncrypt = this.decrypt(encrypt, name);
+    const userDecrypt = decrypt;
+    if (newEncrypt === userDecrypt) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 }
