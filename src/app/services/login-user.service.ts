@@ -13,8 +13,16 @@ export class LoginUserService {
   apiUrl = "http://localhost:4000/users";
 
   setUser(user: User) {
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
     localStorage.setItem('token', user.idToken);
     localStorage.setItem('user', JSON.stringify(user));
+  }
+
+  clearUser() {
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    this.router.navigate(['login']);
   }
 
   getUser(idToken: string) :Observable<User[]> {

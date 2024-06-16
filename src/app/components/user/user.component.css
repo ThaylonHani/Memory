@@ -32,6 +32,8 @@
 
 .pass-container {
   display: flex;
+  margin-top: 1rem;
+  position: relative;
   width: 50%;
   padding: 0.3rem;
   border-radius: 0.5rem;
@@ -39,6 +41,12 @@
   background-color: rgba(21, 20, 26, 0.7);
   align-items: center;
   justify-content: space-between;
+}
+#passLabel {
+  position: absolute;
+  top: -0.6rem;
+  left: 0;
+  font-size: 0.8rem;
 }
 .seePass {
   cursor: pointer;
@@ -51,23 +59,111 @@
   color: #f5f5f5;
   cursor: pointer;
 }
-.seePass span{
-  content: '';
-  position: absolute;
-  background-color: #f5f5f5;
-  width: 24px;
-  height: 2px;
-  transform: rotate(45deg);
+
+#seePassOn{
+  display: none;
+}
+#seePassOff{
+  display: inherit;
+}
+
+.buttons-user {
+  background-color: transparent;
+  color: #f5f5f5;
+  text-decoration: underline;
+  align-self: baseline;
+  cursor: pointer;
+}
+.data-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  gap:1rem;
+}
+.pass-content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.buttons-container{
+  display: flex;
+  width: 60%;
+  justify-content: space-between;
+}
+
+#pass{
+  background-color: transparent;
+}
+
+#changePassModal{
+  display: none;
+  width: 60%;
+  height: 60%;
+  margin: auto;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-  margin: auto;
-  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  padding: 1rem;
+  border-radius: 0.3rem;
+  flex-direction: column;
+  gap: 1rem;
 }
-.seePass span.pass{
-  width: 2px;
-  height: 2px;
-  left: 0.1px;
-  bottom: 0.5px;
+
+.inputBox
+{
+  position: relative;
+  width: 100%;
+}
+.inputBox input
+{
+  position: relative;
+  width: 100%;
+  background: #333;
+  border: none;
+  outline: none;
+  padding: 25px 10px 7.5px;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1em;
+}
+.inputBox i
+{
+  position: absolute;
+  left: 0;
+  padding: 15px 10px;
+  font-style: normal;
+  color: #aaa;
+  transition: 0.5s;
+  pointer-events: none;
+}
+.inputBox input:focus ~ i,
+.inputBox input:valid ~ i
+{
+  transform: translateY(-7.5px);
+  font-size: 0.8em;
+  color: #fff;
+}
+
+.buttons-container-modal{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  gap: 2rem;
+}
+.buttons-modal{
+  width: 60%;
+  padding: 12px;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  color: #f5f5f5;
+  border:2px solid #aaa
 }

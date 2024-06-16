@@ -11,23 +11,13 @@
       "provider": "GOOGLE"
     },
     {
-      "id": "0.9801533731964929",
-      "idToken": "dcb4f2b1636ea4c8e6612b0aaa1c89fc7f0d9be973763f68308f0e38d04d6647",
-      "name": "thaylon haniel",
-      "email": "thaylonhaniel9@hotmail.com",
+      "id": "0.5339127851082205",
+      "idToken": "U2FsdGVkX19UF1LEcv7Z8EFljQ2YjxK0V/DDdaZlgyA=",
+      "name": "thaylon",
+      "email": "thaylon1010@email.com",
       "photoUrl": "",
       "firstName": "thaylon",
-      "lastName": "haniel",
-      "provider": "MEMORY"
-    },
-    {
-      "id": "0.48919351077639206",
-      "idToken": "ded93880485724ad68ed0bc024adfca8b4eadd3ac842ad1298883b1575a6526d",
-      "name": "Thaylon Micael",
-      "email": "thaylonmicael@hotmail.com",
-      "photoUrl": "",
-      "firstName": "Thaylon",
-      "lastName": "Micael",
+      "lastName": "thaylon",
       "provider": "MEMORY"
     }
   ]

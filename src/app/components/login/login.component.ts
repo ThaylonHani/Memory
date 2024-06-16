@@ -33,6 +33,7 @@ export class LoginComponent {
   exist: boolean = false;
   loadingWithGoogle: boolean = false;
   loading: boolean = false;
+  localUser!: string;
 
   inputName: string = '';
   inputPass: string = '';
@@ -41,7 +42,10 @@ export class LoginComponent {
 
   err: boolean = false;
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (localStorage.getItem('user') != null)
+      this.router.navigate(['rooms']);
+  }
 
   handleLoginGoogle() {
     this.authService.authState.subscribe((user) => {
@@ -60,6 +64,8 @@ export class LoginComponent {
     const scrypt = this.crypto.setCrypto(this.inputPass, this.inputName);
     this.logService.getUser(scrypt).subscribe((user) => (this.logService.setUser(user[0])));
     setTimeout(() => {
+      // console.log("ola")
+      // console.log(localStorage.getItem('user') == null)
       if (localStorage.getItem('user') != null) {
         this.router.navigate(['rooms']);
       } else {
@@ -68,7 +74,7 @@ export class LoginComponent {
         this.inputPass = '';
       }
       this.loading = false
-    },1000)
+    }, 1000)
   }
 
   handleUserExists(userId: string): void {

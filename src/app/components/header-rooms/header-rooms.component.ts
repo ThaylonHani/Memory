@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-rooms',
@@ -9,14 +10,18 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './header-rooms.component.css'
 })
 export class HeaderRoomsComponent {
-  hamburger: boolean = false;
+
+  constructor(private router: Router) {
+
+  }
+
   bypass: boolean = false;
   modal: boolean = false;
   handleMenu() {
-    this.hamburger = !this.hamburger;
+    this.router.navigate(['user']);
   }
   handleBypass() {
-    this.bypass = !this.bypass
+    this.bypass = !this.bypass;
   }
   @Output() handleOpenModal = new EventEmitter<boolean>();
 

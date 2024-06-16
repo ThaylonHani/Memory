@@ -1,6 +1,6 @@
 // import { SocialAuthService, SocialLoginModule, SocialUser, GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import {RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
