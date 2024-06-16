@@ -31,8 +31,16 @@ export class LoginUserService {
     this.router.navigate(['login']);
   }
 
+  editPhoto(photo: string, userId: string) {
+    this.http.patch(this.apiUrl + `/${userId}`, { "photoUrl": `${photo}` }).subscribe((user) => console.log(user));
+  }
+
   getUser(name: string): Observable<User[]> {
     return this.http.get<User[]>(this.apiUrl + `/?name=${name}`);
+  }
+
+  getUserById(id: string): Observable<User> {
+    return this.http.get<User>(this.apiUrl + `/${id}`);
   }
 
   confirmEmail(email: string): Observable<User> {
