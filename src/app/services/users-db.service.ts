@@ -25,5 +25,9 @@ export class UsersDbService {
     }
   }
 
+  editPhoto(photo: string | ArrayBuffer | null, userId: string) {
+    this.http.patch(this.apiUrl + `/${userId}`, { "photoUrl": `${photo}` }).subscribe((user) => console.log(user));
+  }
+
 
 }
