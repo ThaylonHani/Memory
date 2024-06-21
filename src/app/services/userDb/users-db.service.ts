@@ -1,9 +1,9 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
-import { User } from '../models/user.model';
+import { User } from '../../models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { LoginUserService } from './login-user.service';
+import { LoginUserService } from '../loginUser/login-user.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +29,8 @@ export class UsersDbService {
     this.http.patch(this.apiUrl + `/${userId}`, { "photoUrl": `${photo}` }).subscribe((user) => console.log(user));
   }
 
+  getUserById(id: string): Observable<User> {
+    return this.http.get<User>(this.apiUrl + `/${id}`);
+  }
 
 }

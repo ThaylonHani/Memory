@@ -9,15 +9,15 @@
       </strong>
     </section>
 
-    <form class="createAccount-form"  >
+    <form class="createAccount-form" [formGroup]="formUser" (ngSubmit)="createAccount()" >
 
         <label for="emailUser">
           Email:
-          <p *ngIf="emailErr" class="inputError">
+          <p *ngIf="emailErr" class="inputError" >
             Email invalid
           </p>
         </label>
-        <input type="text" name="emailUser" id="emailUser" placeholder="Enter your email" [(ngModel)] = "inputEmail" minlength="20"  >
+        <input type="text" name="emailUser" id="emailUser" placeholder="Enter your email" [(ngModel)] = "inputEmail" formControlName="email"  >
 
         <label for="nameUser">
           Name:
@@ -25,12 +25,12 @@
             Name invalid
             </p>
         </label>
-        <input type="text" name="nameUser" id="nameUser" placeholder="Enter your name" [(ngModel)] = "inputName" form>
+        <input type="text" name="nameUser" id="nameUser" placeholder="Enter your name" [(ngModel)] = "inputName" formControlName="name">
 
         <label for="passwordUser">
           Password:
         </label>
-        <input type="password" name="passwordUser" id="passwordUser" placeholder="Enter your password" [(ngModel)] = "inputPass">
+        <input type="password" name="passwordUser" id="passwordUser" placeholder="Enter your password" [(ngModel)] = "inputPass" formControlName="password">
 
         <label for="passwordConfirmUser">
           Confirm password:
@@ -38,7 +38,7 @@
           password wrong
           </p>
         </label>
-        <input type="password" name="passwordConfirmUser" id="passwordConfirmUser" placeholder="Confirm your password" [(ngModel)] = "inputConfirmPass">
+        <input type="password" name="passwordConfirmUser" id="passwordConfirmUser" placeholder="Confirm your password" [(ngModel)] = "inputConfirmPass" formControlName="confirmPassword">
         <div class="createAccount-buttons" >
           <a href="login" id="exit-btn">Signin</a>
           <asl-google-signin-button (click)="handleCreateWithGoogle()" type="standard" size="medium" shape="pill" text="signup_with" [width]="200" theme="filled_blue" logo_alignment="center" >
@@ -47,7 +47,7 @@
             <span>Carregando</span>
           </div>
           <ng-template #createButton>
-            <button type="submit" id="create-btn" (click) = "createAccount()"  >
+            <button type="submit" id="create-btn" >
               Create
             </button>
           </ng-template>

@@ -3,7 +3,7 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { GoogleLoginProvider, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
-import { LoginUserService } from './services/login-user.service';
+import { LoginUserService } from './services/loginUser/login-user.service';
 import { HttpClientModule } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {

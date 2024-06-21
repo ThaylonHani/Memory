@@ -11,19 +11,41 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1.3rem;
 }
 .memories-content li {
-  width: 70%;
+  width: 90%;
   justify-content: space-between;
   display: flex;
   align-items: center;
-}
-.memories-content li img {
-  width: 100px;
+  padding: 0.5rem;
   border-radius: 0.3rem;
+  box-shadow: 1px 1px 10px 3px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s linear;
+  cursor: pointer;
 }
 .memories-content li h1 {
   color: whitesmoke;
   font-size: 1.3rem;
   text-decoration: underline;
+  transition: all 0.2s linear;
+}
+.memories-content li:hover {
+  transform: scale(1.05);
+}
+.memories-content li:hover h1 {
+  text-decoration-color: #f25116 ;
+}
+#image-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+}
+
+li img,li svg {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.3rem;
 }

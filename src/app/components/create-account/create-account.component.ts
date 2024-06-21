@@ -1,31 +1,40 @@
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { User } from '../../models/user.model';
-import { CommonModule } from '@angular/common';
-import { FormsModule, FormBuilder, Validators } from '@angular/forms';
-import { UsersDbService } from '../../services/users-db.service';
+import { AsyncPipe, CommonModule } from '@angular/common';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { UsersDbService } from '../../services/userDb/users-db.service';
 import {
   GoogleSigninButtonModule,
   SocialAuthService,
-  SocialUser,
 } from '@abacritt/angularx-social-login';
-import { CryptoService } from '../../services/crypto.service';
-import { LoginUserService } from '../../services/login-user.service';
+import { CryptoService } from '../../services/crypto/crypto.service';
+import { LoginUserService } from '../../services/loginUser/login-user.service';
 
 @Component({
   selector: 'app-create-account',
   standalone: true,
-  imports: [CommonModule, FormsModule, GoogleSigninButtonModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    GoogleSigninButtonModule,
+    ReactiveFormsModule,
+    AsyncPipe,
+  ],
   templateUrl: './create-account.component.html',
   styleUrl: './create-account.component.css',
 })
 export class CreateAccountComponent {
   constructor(
-    private http: HttpClient,
     private dbService: UsersDbService,
     private authService: SocialAuthService,
     private crypto: CryptoService,
-    private logService : LoginUserService
+    private logService: LoginUserService
   ) {}
 
   apiUrl = 'http://localhost:4000/users';
@@ -43,6 +52,27 @@ export class CreateAccountComponent {
 
   loading: boolean = false;
   googleLoading: boolean = false;
+  formUser!: FormGroup;
+
+  ngOnInit(): void {
+    this.formUser = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      name: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(30),
+        Validators.pattern(/\s*[a-zA-Z]/g),
+      ]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
+      confirmPassword: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
+    });
+  }
 
   createAccount(): void {
     this.confirmEmailExist(this.inputEmail);
@@ -53,20 +83,12 @@ export class CreateAccountComponent {
         alert('Já existe um usuário com o email');
         this.loading = false;
       } else {
-        this.passwordErr = this.confirmPassword(
-          this.inputPass,
-          this.inputConfirmPass
-        );
-        this.emailErr = this.inputEmail.length < 20;
+        this.passwordErr = this.confirmPassword(this.inputPass, this.inputConfirmPass);
         this.nameErr = this.inputName.length < 5;
-        if (this.emailErr) {
-          this.inputEmail = '';
-          this.loading = false;
-        } else if (this.nameErr) {
-          this.inputName = '';
-          this.loading = false;
-        } else if (this.passwordErr) {
-          this.inputConfirmPass = '';
+        if (this.emailErr || this.nameErr || this.passwordErr) {
+          if (this.emailErr) this.inputEmail = '';
+          if (this.nameErr) this.inputName = '';
+          if (this.passwordErr) this.inputConfirmPass = '';
           this.loading = false;
         } else {
           const separeteName = this.inputName.split(' ');
@@ -82,7 +104,7 @@ export class CreateAccountComponent {
           });
         }
       }
-    }, 1500);
+    }, 500);
   }
 
   handleCreateWithGoogle(): void {
@@ -90,7 +112,7 @@ export class CreateAccountComponent {
       this.confirmEmailExist(user.email);
       setTimeout(() => {
         if (this.userEmailExist) {
-          alert("Usuário já existe")
+          alert('Usuário já existe');
           this.emailErr = this.userEmailExist;
         } else {
           this.dbService.postUser(user);
@@ -99,14 +121,15 @@ export class CreateAccountComponent {
     });
   }
 
-  confirmEmailExist(email: string): void {
-    if (email == '') {
-      this.userEmailExist = false;
+  async confirmEmailExist(email: string): Promise<void> {
+    if (email.trim().length != 0) {
+      this.logService.confirmEmail(email).subscribe((user) => {
+        this.userEmailExist = user != null && user.name != null
+      });
     } else {
-      this.logService.confirmEmail(email).subscribe((user) =>  this.userEmailExist = user != null && user.name != null);
+      this.emailErr = true;
     }
   }
-
   confirmPassword(pass: string, confirmPass: string): boolean {
     if (pass != confirmPass || pass.length < 8) {
       return true;

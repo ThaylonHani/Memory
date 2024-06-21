@@ -1,10 +1,10 @@
 import { RouterModule, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { User } from '../../models/user.model';
-import { LoginUserService } from '../../services/login-user.service';
-import { CryptoService } from './../../services/crypto.service';
+import { LoginUserService } from '../../services/loginUser/login-user.service';
+import { CryptoService } from '../../services/crypto/crypto.service';
 import { Component } from '@angular/core';
-import { UsersDbService } from '../../services/users-db.service';
+import { UsersDbService } from '../../services/userDb/users-db.service';
 
 @Component({
   selector: 'app-user',
@@ -18,18 +18,14 @@ export class UserComponent {
     private cryptoService: CryptoService,
     private logService: LoginUserService,
     private userService: UsersDbService
-  ) {
-    this.handlePass();
-  }
+  ) {}
 
   pass: string = '';
   changePassModal: boolean = false;
   user: User = JSON.parse(localStorage.getItem('user')!);
 
   ngOnInit() {
-    this.logService
-      .getUserById(this.user.id)
-      .subscribe((user) => this.logService.setUser(user));
+    this.handlePass();
   }
 
   handlePass(): void {

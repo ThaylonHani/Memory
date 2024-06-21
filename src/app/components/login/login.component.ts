@@ -5,12 +5,12 @@ import {
   SocialAuthService,
   SocialUser,
 } from '@abacritt/angularx-social-login';
-import { LoginUserService } from '../../services/login-user.service';
+import { LoginUserService } from '../../services/loginUser/login-user.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { User } from '../../models/user.model';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { CryptoService } from '../../services/crypto.service';
+import { CryptoService } from '../../services/crypto/crypto.service';
 
 @Component({
   selector: 'app-login',
