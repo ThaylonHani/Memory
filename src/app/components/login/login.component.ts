@@ -77,9 +77,9 @@ export class LoginComponent {
     setTimeout(() => {
       if (localStorage.getItem('user') != null) {
         const user: User = JSON.parse(localStorage.getItem('user')!);
-        const decrypt = this.crypto.decrypt(user.idToken, user.name);
-        const crypto = this.crypto.setCrypto(this.inputPass, this.inputName);
-        if (this.crypto.confirmCrypto(crypto, decrypt, this.inputName)) {
+        const decrypt = this.crypto.decipher(user.idToken, user.name);
+        const crypto = this.crypto.setCipher(this.inputPass, this.inputName);
+        if (this.crypto.confirmCipher(crypto, decrypt, this.inputName)) {
           this.router.navigate(['rooms']);
         } else {
           this.err = true;

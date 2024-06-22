@@ -29,7 +29,7 @@ export class UserComponent {
   }
 
   handlePass(): void {
-    const passDecrypt = this.cryptoService.decrypt(
+    const passDecrypt = this.cryptoService.decipher(
       this.user.idToken,
       this.user.name
     );

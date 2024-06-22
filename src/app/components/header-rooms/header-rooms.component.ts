@@ -11,9 +11,8 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class HeaderRoomsComponent {
 
-  constructor(private router: Router) {
-
-  }
+  constructor(private router: Router) {}
+  @Output() handleOpenModal = new EventEmitter<boolean>();
 
   bypass: boolean = false;
   modal: boolean = false;
@@ -23,7 +22,6 @@ export class HeaderRoomsComponent {
   handleBypass() {
     this.bypass = !this.bypass;
   }
-  @Output() handleOpenModal = new EventEmitter<boolean>();
 
   handleModalRooms() {
     if (this.modal) {

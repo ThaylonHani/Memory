@@ -67,6 +67,7 @@ button {
 }
 #AddIcon{
   transition: all 0.3s linear;
+  cursor: pointer;
 }
 #AddIcon:hover{
   transform: translateY(-0.1rem);

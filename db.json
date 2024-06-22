@@ -38,25 +38,13 @@
       "photo": "",
       "users": [
         {
-          "id":"0.6361440264362397",
+          "id": "0.6361440264362397",
           "name": "Thaylinho",
           "photoUrl": ""
         },
         {
           "id": "0.254418946105164",
           "name": "Thaylo",
-          "photoUrl": ""
-        }
-      ]
-    },
-    {
-      "id": "2",
-      "name": "Amigos",
-      "photo": "",
-      "users": [
-        {
-          "id":"0.6361440264362397",
-          "name": "Thaylinho",
           "photoUrl": ""
         }
       ]

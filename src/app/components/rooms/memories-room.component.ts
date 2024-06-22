@@ -21,8 +21,7 @@ export class MemoriesRoomComponent implements OnInit {
 
   user : User = JSON.parse(localStorage.getItem('user') || '') ;
   createRoom: boolean = false;
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 
 

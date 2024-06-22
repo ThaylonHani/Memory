@@ -1,5 +1,5 @@
 export interface Room  {
-  id:	String,
+  id?: String ,
   name:	String,
   photo: String,
   users: [{

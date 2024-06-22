@@ -8,27 +8,32 @@ export class CryptoService {
 
   constructor() { }
 
-  setCrypto(password : string, name: string ) : string {
+  setCipher(password : string, name: string ) : string {
     const encrypt = CryptoJS.AES.encrypt(password, name).toString();
 
     return encrypt
   }
 
-  decrypt(pass: string, name:  string): string{
+  decipher(pass: string, name:  string): string{
 
     const decrypt = CryptoJS.AES.decrypt(pass, name).toString(CryptoJS.enc.Utf8);
 
     return decrypt;
   }
 
-  confirmCrypto(encrypt : string, decrypt : string, name : string): boolean {
-    const newEncrypt = this.decrypt(encrypt, name);
+  confirmCipher(encrypt : string, decrypt : string, name : string): boolean {
+    const newEncrypt = this.decipher(encrypt, name);
     const userDecrypt = decrypt;
     if (newEncrypt === userDecrypt) {
       return true;
     } else {
       return false;
     }
+  }
+
+  setSha256(password: string): string {
+    const hash = CryptoJS.SHA256(password);
+    return hash.toString(CryptoJS.enc.Hex);
   }
 
 }

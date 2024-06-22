@@ -15,6 +15,13 @@
 }
 .memories-content li {
   width: 90%;
+  border-radius: 0.3rem;
+  box-shadow: 1px 1px 10px 3px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s linear;
+  list-style: none;
+}
+.memories-content li a {
+  width: 100%;
   justify-content: space-between;
   display: flex;
   align-items: center;
