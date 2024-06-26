@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user.model';
 import { ListRoomsComponent } from '../list-rooms/list-rooms.component';
 import { CreateRoomModalComponent } from '../create-room-modal/create-room-modal.component';
+import { LoginUserService } from '../../services/loginUser/login-user.service';
 
 @Component({
   selector: 'app-memories-room',
@@ -15,12 +16,13 @@ import { CreateRoomModalComponent } from '../create-room-modal/create-room-modal
 
 export class MemoriesRoomComponent implements OnInit {
 
-  constructor() {  };
+  constructor(private logService: LoginUserService) {  };
 
   modal: boolean = false;
 
   user : User = JSON.parse(localStorage.getItem('user') || '') ;
   createRoom: boolean = false;
+
   ngOnInit() {}
 
 

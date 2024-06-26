@@ -19,8 +19,7 @@ export class LoginUserService {
       localStorage.setItem('token', user.idToken);
       localStorage.setItem('user', JSON.stringify(user));
       setTimeout(() => {
-        localStorage.removeItem('user');
-        localStorage.removeItem('token');
+        this.clearUser();
       }, 60000 * 60);
     }
   }

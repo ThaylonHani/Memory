@@ -1,0 +1,42 @@
+#room-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#room-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 70%;
+}
+#room-header img {
+  border-radius: 50%;
+}
+
+#post{
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  width: 100vw;
+}
+#post #post-profile{
+  display: flex;
+  align-items: center;
+  color: #f5f5f5;
+  padding: 0.3rem;
+}
+#post #post-profile img {
+  border-radius: 0.5rem;
+}
+#post #post-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#post #post-content img{
+  width: 98vw;
+  height: 30rem;
+}
