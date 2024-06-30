@@ -1,7 +1,7 @@
 <div id="memoris">
     <ul class="memories-content">
       <li *ngFor="let item of items;" >
-        <a routerLink="/room/{{item.id}}">
+        <a routerLink="/rooms/{{item.id}}">
 
             <div id="image-container">
               <img src="{{item.photo}}" alt="Imagem da sala {{item.photo}}" *ngIf="item.photo">

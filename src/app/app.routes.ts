@@ -10,7 +10,7 @@ export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'login'
+    redirectTo: 'login',
   },
   {
     path: 'login',
@@ -27,13 +27,13 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-      path: 'rooms/:id',
-      component: RoomPageComponent,
-      canActivate: [userAuthenticatedGuard]
+    path: 'rooms/:id',
+    component: RoomPageComponent,
+    canActivate: [userAuthenticatedGuard],
   },
   {
     path: 'user',
     component: UserComponent,
-    canActivate: [userAuthenticatedGuard]
-  }
+    canActivate: [userAuthenticatedGuard],
+  },
 ];
