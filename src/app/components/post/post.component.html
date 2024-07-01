@@ -1,10 +1,10 @@
-<div id="post">
+<div class="post" id="{{post.id}}">
   <section id="post-profile">
-    <img src="https://picsum.photos/32" alt="">
-    <h3>Nome</h3>
+    <img src="{{userPhoto}}" alt="">
+    <h3>{{userName}}</h3>
   </section>
   <section id="post-content">
-    <img src="https://picsum.photos/600" alt="">
+    <img src="{{post.content}}" alt="">
   </section>
   <section id="post-menu">
    <button (click)="handleLike()" class="button-post">

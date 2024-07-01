@@ -1,10 +1,13 @@
+import { Post } from "./post.model"
+
 export interface Room  {
-  id?: String ,
-  name:	String,
-  photo: String,
+  id?: string ,
+  name:	string,
+  photo: string,
   users: [{
-    id: String,
-    name: String,
-    photo: String
-  }]
+    id: string,
+    name: string,
+    photo: string
+  }],
+  posts?: Post[],
 }

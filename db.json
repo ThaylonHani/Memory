@@ -48,6 +48,46 @@
           "photoUrl": ""
         }
       ]
+    },
+    {
+      "id": "2",
+      "name": "Sala 5b",
+      "photo": "",
+      "users": [
+        {
+          "id": "0.6361440264362397",
+          "name": "Thaylinho",
+          "photoUrl": ""
+        },
+        {
+          "id": "0.254418946105164",
+          "name": "Thaylo",
+          "photoUrl": ""
+        }
+      ]
+    }
+  ],
+  "posts": [
+    {
+      "id": "1",
+      "content": "",
+      "description": "",
+      "roomId": "1",
+      "userId": "0.254418946105164"
+    },
+    {
+      "id": "2",
+      "content": "",
+      "description": "",
+      "roomId": "2",
+      "userId": "0.254418946105164"
+    },
+    {
+      "id": "3",
+      "content": "",
+      "description": "",
+      "roomId": "1",
+      "userId": "0.6361440264362397"
     }
   ]
 }

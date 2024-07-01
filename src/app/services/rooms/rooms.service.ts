@@ -15,8 +15,17 @@ export class RoomsService {
     return this.http.get<Room[]>("http://localhost:4000/rooms")
   }
 
+  getRoomId(id: string): Observable<Room> {
+    return this.http.get<Room>("http://localhost:4000/rooms/" + id)
+  }
+
+  getRoomPosts(id:string): Observable<Room>{
+    return this.http.get<Room>(`http://localhost:4000/rooms/${id}?_embed=posts`);
+  }
+
   postRooms(room: Room): Observable<Room> {
     return this.http.post<Room>("http://localhost:4000/rooms", room);
   }
+
 
 }
