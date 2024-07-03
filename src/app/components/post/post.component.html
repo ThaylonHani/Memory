@@ -4,7 +4,8 @@
     <h3>{{userName}}</h3>
   </section>
   <section id="post-content">
-    <img src="{{post.content}}" alt="">
+    <img src="{{post.content}}" alt="" *ngIf="post.content" class="photo">
+   <div *ngIf="!post.content" class="photo noPhoto"></div>
   </section>
   <section id="post-menu">
    <button (click)="handleLike()" class="button-post">
