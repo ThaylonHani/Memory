@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { LoginUserService } from '../loginUser/login-user.service';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class UsersDbService {
 
    loginService = inject(LoginUserService);
 
-  apiUrl = "http://localhost:4000/users";
+  apiUrl = `${environment.api}/users`;
 
 
   postUser(body : User) : void {

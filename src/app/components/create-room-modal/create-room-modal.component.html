@@ -21,14 +21,14 @@
     </section>
     <section class="enterRoom" *ngIf="enterRoom" >
       <div class="inputBox">
-        <input type="text" required /> <i>Id room</i>
+        <input type="text" required [(ngModel)]="inputRoomName" formControlName="name" /> <i>Id room</i>
       </div>
       <div class="inputBox">
-        <input type="text" required /> <i>Password room</i>
+        <input type="text" required formControlName="password" /> <i>Password room</i>
       </div>
     </section>
     <section class="modalButtonsAction">
-      <button class="actionButton"  type="submit" [disabled]="!formRoom.valid" [title]="formRoom.valid ? enterRoom ? 'Botão de entrar na sala ' : 'Botão de criar sala'  : 'Preencha corretamente os campos' " >
+      <button class="actionButton"  type="submit" [disabled]="!formRoom.valid && !enterRoom" [title]="formRoom.valid ? enterRoom ? 'Botão de entrar na sala ' : 'Botão de criar sala'  : 'Preencha corretamente os campos' " >
         {{enterRoom ? 'Entrar' : 'Criar'}}
       </button>
       <button (click)="handleCloseModal.emit(false)">

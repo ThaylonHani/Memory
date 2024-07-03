@@ -22,8 +22,7 @@ export class ListRoomsComponent {
   getRooms() {
     const userId = (JSON.parse(localStorage.getItem("user")!).id);
     this.roomsService.getRooms().subscribe((rooms) => {
-      // rooms.filter((room) => room.users.find((user) => user == userId));
-      this.items = rooms.filter((room) => room.users.find((user) => user.id == userId))
+      this.items = rooms.filter((room) => room?.users.find((user) => user.id == userId))
     });
   }
 }

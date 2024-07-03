@@ -1,4 +1,4 @@
-export interface User {
+export type User = {
   id: string;
   idToken: string;
   email: string;
@@ -8,3 +8,5 @@ export interface User {
   lastName: string;
   provider: string;
 }
+
+export type userRoom = Omit<User, 'idToken' | 'email' | 'firstName' | 'lastName' | 'provider'>;

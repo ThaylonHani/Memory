@@ -33,35 +33,14 @@
   ],
   "rooms": [
     {
-      "id": "1",
-      "name": "Praia",
+      "id": "e607",
+      "name": "thaylon",
+      "pass": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
       "photo": "",
       "users": [
         {
           "id": "0.6361440264362397",
           "name": "Thaylinho",
-          "photoUrl": ""
-        },
-        {
-          "id": "0.254418946105164",
-          "name": "Thaylo",
-          "photoUrl": ""
-        }
-      ]
-    },
-    {
-      "id": "2",
-      "name": "Sala 5b",
-      "photo": "",
-      "users": [
-        {
-          "id": "0.6361440264362397",
-          "name": "Thaylinho",
-          "photoUrl": ""
-        },
-        {
-          "id": "0.254418946105164",
-          "name": "Thaylo",
           "photoUrl": ""
         }
       ]

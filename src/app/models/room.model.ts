@@ -1,13 +1,16 @@
 import { Post } from "./post.model"
 
-export interface Room  {
-  id?: string ,
+export type Room = {
+  id?: string,
+  pass: string,
   name:	string,
   photo: string,
   users: [{
     id: string,
     name: string,
-    photo: string
+    photoUrl: string
   }],
   posts?: Post[],
 }
+
+export type enterRoom = Omit<Room, 'name' | 'photo' | 'users' | 'posts'>;
