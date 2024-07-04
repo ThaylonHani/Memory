@@ -30,11 +30,9 @@ export class RoomsService {
     return this.http.post<Room>(this.apiUrl, room);
   }
 
-  enterRoom(room: enterRoom, users: userRoom[]){
+  enterRoom(room: enterRoom, users: userRoom[]): Observable<Room> {
 
-    console.log(users);
-
-      // return this.http.patch<Room>(`${this.apiUrl}/${room.id}`, {users: users } )
+      return this.http.patch<Room>(`${this.apiUrl}/${room.id}`, {users: users } )
 
   }
 

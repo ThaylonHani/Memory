@@ -11,6 +11,7 @@ import {
 } from '@angular/forms';
 import { User, userRoom } from '../../models/user.model';
 import { Router } from '@angular/router';
+import { enterRoom } from '../../models/room.model';
 @Component({
   selector: 'app-create-room-modal',
   standalone: true,
@@ -59,7 +60,7 @@ export class CreateRoomModalComponent {
     password = this.cryptoService.setSha256(password);
     if (!this.enterRoom) {
       this.roomsService
-      .postRooms({
+        .postRooms({
           name: name,
           pass: password,
           photo: '',
@@ -76,18 +77,38 @@ export class CreateRoomModalComponent {
             this.router.navigate([`rooms/${room.id}`]);
           }
         });
-      } else {
-      let { name, password, confirmPassword } = this.formRoom.value;
+    } else {
+      let { name, password } = this.formRoom.value;
       let usersList!: userRoom[];
-
+      let room!: enterRoom
       password = this.cryptoService.setSha256(password);
 
-      this.roomsService.getRoomId(name).subscribe((users) => usersList = users.users);
-
-      this.roomsService.enterRoom(
-        { id: name, pass: password },
-        usersList
-      )
+      this.roomsService
+        .getRoomId(name)
+        .subscribe((rooms) => {
+          room = rooms;
+          usersList = rooms.users;
+        });
+      setTimeout(() => {
+        if (room.pass == password) {
+          this.roomsService
+            .enterRoom({ id: name, pass: password }, [
+              ...usersList,
+              {
+                id: this.user.id,
+                name: this.user.name,
+                photoUrl: this.user.photoUrl,
+              },
+            ])
+            .subscribe((room) => {
+              if (room != null && room.id != null) {
+                this.router.navigate([`rooms/${room.id}`]);
+              }
+            });
+        } else {
+          alert("wrong password")
+        }
+      }, 200);
     }
   }
 }

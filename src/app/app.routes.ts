@@ -5,6 +5,7 @@ import { CreateAccountComponent } from './components/create-account/create-accou
 import { userAuthenticatedGuard } from './services/guards/user-authenticated.guard';
 import { UserComponent } from './components/user/user.component';
 import { RoomPageComponent } from './components/room-page/room-page.component';
+import { roomAuthenticationGuard } from './services/guards/room-authentication.guard';
 
 export const routes: Routes = [
   {
@@ -29,7 +30,7 @@ export const routes: Routes = [
   {
     path: 'rooms/:id',
     component: RoomPageComponent,
-    canActivate: [userAuthenticatedGuard],
+    canActivate: [userAuthenticatedGuard, roomAuthenticationGuard],
   },
   {
     path: 'user',
