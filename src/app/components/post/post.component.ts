@@ -1,23 +1,27 @@
+import { userRoom } from './../../models/user.model';
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Post } from '../../models/post.model';
 import { UsersDbService } from '../../services/userDb/users-db.service';
+import { PostsService } from '../../services/posts/posts.service';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-post',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './post.component.html',
-  styleUrl: './post.component.css'
+  styleUrl: './post.component.css',
 })
 export class PostComponent {
-
-  constructor(private userService: UsersDbService) {
-  }
-
+  constructor(
+    private userService: UsersDbService,
+    private postService: PostsService
+  ) {}
   like: boolean = false;
   comments: boolean = false;
   archive: boolean = false;
+  userPage: User = JSON.parse(localStorage.getItem('user')!);
 
   userName!: string;
   userPhoto!: string;
@@ -28,8 +32,22 @@ export class PostComponent {
     this.handleUser();
   }
 
-  handleLike(): void {
-    this.like = !this.like;
+  handleLike(post: Post): void {
+    let usersList!: userRoom[];
+    const userR: userRoom = {
+      id: this.userPage.id,
+      name: this.userPage.name,
+      photoUrl: this.userPage.photoUrl,
+    };
+    this.postService;
+
+    this.postService.getPost(post.id).subscribe((pst) => {
+      usersList = pst.likes ? pst.likes : [];
+    });
+    setTimeout(() => {
+      this.like = !this.like;
+      this.postService.likePost(post, [...usersList, userR]).subscribe();
+    }, 100);
   }
 
   handleArchive(): void {
@@ -46,5 +64,4 @@ export class PostComponent {
       this.userPhoto = user.photoUrl;
     });
   }
-
 }

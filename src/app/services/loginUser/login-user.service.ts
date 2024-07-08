@@ -1,3 +1,4 @@
+import { userRoom } from './../../models/user.model';
 import { Injectable } from '@angular/core';
 import { User } from '../../models/user.model';
 import { HttpClient } from '@angular/common/http';
@@ -14,6 +15,11 @@ export class LoginUserService {
   apiUrl = `${environment.api}/users`;
 
   setUser(user: User) {
+    const userR: userRoom = {
+      id : user.id,
+      name : user.name,
+      photoUrl : user.photoUrl
+    }
     if (user != null && user != undefined) {
       localStorage.removeItem('user');
       localStorage.removeItem('token');

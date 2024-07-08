@@ -75,6 +75,7 @@ export class LoginComponent {
       this.inputPass = '';
     }
     setTimeout(() => {
+
       if (localStorage.getItem('user') != null) {
         const user: User = JSON.parse(localStorage.getItem('user')!);
         const decrypt = this.crypto.decipher(user.idToken, user.name);

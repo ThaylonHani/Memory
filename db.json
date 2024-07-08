@@ -42,6 +42,11 @@
           "id": "0.6361440264362397",
           "name": "Thaylinho",
           "photoUrl": ""
+        },
+        {
+          "id": "0.254418946105164",
+          "name": "Thaylo",
+          "photoUrl": ""
         }
       ]
     }
@@ -51,22 +56,22 @@
       "id": "1",
       "content": "",
       "description": "",
-      "roomId": "1",
-      "userId": "0.254418946105164"
-    },
-    {
-      "id": "2",
-      "content": "",
-      "description": "",
-      "roomId": "2",
+      "roomId": "e607",
       "userId": "0.254418946105164"
     },
     {
       "id": "3",
       "content": "https://picsum.photos/200/300",
       "description": "",
-      "roomId": "1",
-      "userId": "0.6361440264362397"
+      "roomId": "e607",
+      "userId": "0.6361440264362397",
+      "likes": [
+        {
+          "id": "0.254418946105164",
+          "name": "Thaylo",
+          "photoUrl": ""
+        }
+      ]
     }
   ]
 }

@@ -31,9 +31,7 @@ export class RoomsService {
   }
 
   enterRoom(room: enterRoom, users: userRoom[]): Observable<Room> {
-
       return this.http.patch<Room>(`${this.apiUrl}/${room.id}`, {users: users } )
-
   }
 
 }

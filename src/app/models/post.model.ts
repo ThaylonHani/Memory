@@ -3,5 +3,6 @@ export interface Post {
   content: string,
   description?: string,
   roomId: string,
-  userId: string
+  userId: string,
+  likes?: [],
 }
