@@ -31,6 +31,7 @@ export class PostsService {
   }
 
   unLikePost(post: Post, user: userRoom[]): Observable<Post>{
+    // console.log(user)
     return this.http.patch<Post>(`${this.apiUrl}/${post.id}`, { likes: user });
   }
 

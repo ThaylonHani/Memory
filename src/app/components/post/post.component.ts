@@ -18,7 +18,7 @@ export class PostComponent {
     private userService: UsersDbService,
     private postService: PostsService
   ) {}
-  like: boolean = false;
+  like: boolean = true;
   comments: boolean = false;
   archive: boolean = false;
   userPage: User = JSON.parse(localStorage.getItem('user')!);
@@ -39,15 +39,25 @@ export class PostComponent {
       name: this.userPage.name,
       photoUrl: this.userPage.photoUrl,
     };
-    this.postService;
-
     this.postService.getPost(post.id).subscribe((pst) => {
       usersList = pst.likes ? pst.likes : [];
     });
     setTimeout(() => {
-      this.like = !this.like;
-      this.postService.likePost(post, [...usersList, userR]).subscribe();
-    }, 100);
+      if (!this.like) {
+        this.like = !this.like;
+        this.postService.likePost(post, [...usersList, userR]).subscribe();
+      } else {
+        let id: number | undefined;
+        this.postService.getPost(post.id).subscribe((pst) => {
+            pst.likes?.find((user: userRoom) => {
+              user.id == this.userPage.id;
+            })
+          // usersList = usersList.splice(id!, 1);
+        });
+        this.postService.unLikePost(post, usersList).subscribe();
+        this.like = !this.like;
+      }
+    }, 200);
   }
 
   handleArchive(): void {
