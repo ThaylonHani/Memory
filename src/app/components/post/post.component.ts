@@ -42,22 +42,24 @@ export class PostComponent {
     this.postService.getPost(post.id).subscribe((pst) => {
       usersList = pst.likes ? pst.likes : [];
     });
-    setTimeout(() => {
       if (!this.like) {
         this.like = !this.like;
-        this.postService.likePost(post, [...usersList, userR]).subscribe();
+        setTimeout(() => {
+          this.postService.likePost(post, [...usersList, userR]).subscribe();
+        }, 100)
       } else {
         let id: number | undefined;
+        setTimeout(() => {
         this.postService.getPost(post.id).subscribe((pst) => {
-            pst.likes?.find((user: userRoom) => {
-              user.id == this.userPage.id;
-            })
-          // usersList = usersList.splice(id!, 1);
+          id = pst.likes?.findIndex((user: userRoom) => {
+            return user.id == this.userPage.id;
+          });
         });
+        usersList = usersList.splice(id!, 1);
         this.postService.unLikePost(post, usersList).subscribe();
         this.like = !this.like;
+      }, 100)
       }
-    }, 200);
   }
 
   handleArchive(): void {
