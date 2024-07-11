@@ -17,11 +17,13 @@ export class PostComponent {
   constructor(
     private userService: UsersDbService,
     private postService: PostsService
-  ) {}
+  ) {
+  }
   like: boolean = true;
   comments: boolean = false;
   archive: boolean = false;
   userPage: User = JSON.parse(localStorage.getItem('user')!);
+  usersList!: userRoom[];
 
   userName!: string;
   userPhoto!: string;
@@ -30,22 +32,29 @@ export class PostComponent {
 
   ngOnInit() {
     this.handleUser();
+    this.handleLike(this.post);
   }
 
   handleLike(post: Post): void {
-    let usersList!: userRoom[];
+    this.postService.getPost(post.id).subscribe((pst) => {
+      this.like = pst.likes?.findIndex((user : userRoom) => user.id == this.userPage.id) != -1 && pst.likes?.findIndex((user : userRoom) => user.id == this.userPage.id) != undefined;
+      this.usersList = pst.likes ? pst.likes : [];
+    });
+  }
+
+  handleLikeClick(post: Post): void {
     const userR: userRoom = {
       id: this.userPage.id,
       name: this.userPage.name,
       photoUrl: this.userPage.photoUrl,
     };
     this.postService.getPost(post.id).subscribe((pst) => {
-      usersList = pst.likes ? pst.likes : [];
+      this.usersList = pst.likes ? pst.likes : [];
     });
       if (!this.like) {
         this.like = !this.like;
         setTimeout(() => {
-          this.postService.likePost(post, [...usersList, userR]).subscribe();
+          this.postService.likePost(post, [...this.usersList, userR]).subscribe();
         }, 100)
       } else {
         let id: number | undefined;
@@ -55,8 +64,8 @@ export class PostComponent {
             return user.id == this.userPage.id;
           });
         });
-        usersList = usersList.splice(id!, 1);
-        this.postService.unLikePost(post, usersList).subscribe();
+        this.usersList = this.usersList.splice(id!, 1);
+        this.postService.unLikePost(post, this.usersList).subscribe();
         this.like = !this.like;
       }, 100)
       }
