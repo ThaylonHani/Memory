@@ -17,13 +17,14 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 90%;
+  width: 100%;
+  gap: 1rem;
   padding: 1rem;
 }
 
 .user-data{
   display: flex;
-  width: 50%;
+  width: 60%;
   color: whitesmoke;
   flex-direction: column;
   justify-content: center;
@@ -35,8 +36,8 @@
 #userPhoto-container{
   position: relative;
   display: flex;
-  width: 128px;
-  height: 128px;
+  width: 100px;
+  height: 100px;
   align-items: center;
   justify-content: center;
   background-color: #aaa;
@@ -134,7 +135,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 100%;
   gap:1rem;
 }
 .pass-content{
