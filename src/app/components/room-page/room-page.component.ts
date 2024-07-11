@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PostComponent } from '../post/post.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { RoomsService } from '../../services/rooms/rooms.service';
 import { CommonModule } from '@angular/common';
 import { Post } from '../../models/post.model';
@@ -8,7 +8,7 @@ import { Post } from '../../models/post.model';
 @Component({
   selector: 'app-room-page',
   standalone: true,
-  imports: [PostComponent, CommonModule],
+  imports: [PostComponent, CommonModule, RouterLink],
   templateUrl: './room-page.component.html',
   styleUrl: './room-page.component.css'
 })
