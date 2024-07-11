@@ -47,8 +47,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100px;
-  height: 100px;
+  width: 30%;
+  height: 30%;
 }
 
 li img,li svg {
