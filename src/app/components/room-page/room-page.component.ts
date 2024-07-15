@@ -8,7 +8,7 @@ import { Post } from '../../models/post.model';
 @Component({
   selector: 'app-room-page',
   standalone: true,
-  imports: [PostComponent, CommonModule, RouterLink],
+  imports: [PostComponent, CommonModule, RouterLink, RoomPageComponent],
   templateUrl: './room-page.component.html',
   styleUrl: './room-page.component.css'
 })

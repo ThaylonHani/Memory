@@ -1,0 +1,49 @@
+.commentBackground {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(21, 20, 26, 0.6);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.commentModal {
+    position:  fixed;
+    justify-self: center;
+    width: 80%;
+    height: 60vh;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    background-color: #15141A;
+    z-index: 10;
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 0.3rem 1rem;
+    color: #f5f5f5;
+}
+.commentUser{
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+}
+.commentUser img{
+    width: 32px;
+    border-radius: 50% ;
+}
+.commentUser h3 {
+    font-size: larger;
+    font-style: normal;
+    font-weight: lighter;
+}
+span {
+    color: #f5f5f5;
+}

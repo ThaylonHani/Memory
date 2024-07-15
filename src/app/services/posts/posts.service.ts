@@ -21,7 +21,11 @@ export class PostsService {
   getPost(id: string): Observable<Post> {
     return this.http.get<Post>(`${this.apiUrl}/${id}`);
   }
-
+  
+  getPostComments(id: string): Observable<Post>{
+    return this.http.get<Post>(`${this.apiUrl}/${id}?_embed=comments`);
+  }
+  
   setPost(body: Post): void{
     this.http.post<Post>(`${this.apiUrl}?_embed=users`, body);
   }
@@ -31,7 +35,6 @@ export class PostsService {
   }
 
   unLikePost(post: Post, user: userRoom[]): Observable<Post>{
-    // console.log(user)
     return this.http.patch<Post>(`${this.apiUrl}/${post.id}`, { likes: user });
   }
 

@@ -44,7 +44,7 @@ export class UserComponent {
   }
 
   handlePhoto() {
-    const photoInput = (<HTMLInputElement>document.getElementById('file'));
+    const photoInput = <HTMLInputElement>document.getElementById('file');
     const reader = new FileReader();
     const file = photoInput.files![0];
     reader.readAsDataURL(file as Blob);
@@ -52,18 +52,19 @@ export class UserComponent {
       let imageType = file.type;
       let imageSize = file.size;
       console.log(file);
-      const allowedImageMatch = imageType != "image/jpeg" && imageType != "image/jpg" && imageType != "image/png";
+      const allowedImageMatch =
+        imageType != 'image/jpeg' &&
+        imageType != 'image/jpg' &&
+        imageType != 'image/png';
       console.log(allowedImageMatch);
       if (imageSize > 1e6) {
-        alert("imagem deve ter tamanho menor ou igual a 1Mb")
+        alert('imagem deve ter tamanho menor ou igual a 1Mb');
+      } else if (allowedImageMatch) {
+        alert('Apenas arquivo do tipo .jpeg/.jpg e .png são permitidas');
+      } else {
+        this.userService.editPhoto(reader.result, this.user.id);
       }
-      else if (allowedImageMatch) {
-        alert("Apenas arquivo do tipo .jpeg/.jpg e .png são permitidas");
-      }
-      else {
-        this.userService.editPhoto(reader.result, this.user.id)
-      }
-    }
+    };
   }
 
   handleSeePass(): void {

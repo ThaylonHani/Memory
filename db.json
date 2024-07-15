@@ -78,5 +78,13 @@
         }
       ]
     }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "userId": "0.254418946105164",
+      "text" : "amei esse lugar, devemos ir mais vezes.",
+      "postId": "3"
+    }
   ]
 }

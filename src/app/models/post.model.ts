@@ -5,4 +5,5 @@ export interface Post {
   roomId: string,
   userId: string,
   likes?: [],
+  comments?:[]
 }
