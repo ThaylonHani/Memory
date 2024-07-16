@@ -1,7 +1,7 @@
 import { userRoom } from './../../models/user.model';
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { Post } from '../../models/post.model';
+import { CommentPost, Post } from '../../models/post.model';
 import { UsersDbService } from '../../services/userDb/users-db.service';
 import { PostsService } from '../../services/posts/posts.service';
 import { User } from '../../models/user.model';
@@ -23,6 +23,7 @@ export class PostComponent {
   archive: boolean = false;
   userPage: User = JSON.parse(localStorage.getItem('user')!);
   usersList!: userRoom[];
+  commentsPost?: CommentPost[];
 
   userName!: string;
   userPhoto!: string;
@@ -86,6 +87,9 @@ export class PostComponent {
       : (bodyStyleOverflow.overflow = 'inherit');
       this.postService.getPostComments(this.post.id).subscribe((post: Post) => {
         console.log(post.comments);
+        if(post.comments == undefined || post.comments?.length > 0  ){
+            this.commentsPost = post.comments;
+        }
       });
     }
     
