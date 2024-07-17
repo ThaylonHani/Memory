@@ -21,6 +21,7 @@ export class CommentModalComponent {
 
   name! : string;
 
+
   closeModal() {
     console.log(this.comments)
     this.modalVisible.emit(false);

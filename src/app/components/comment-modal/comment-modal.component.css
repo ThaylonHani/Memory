@@ -8,7 +8,7 @@
     left: 0;
     right: 0;
 }
-.commentModal {
+.commentModal, .notComments {
     position:  fixed;
     justify-self: center;
     width: 80%;

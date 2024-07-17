@@ -87,8 +87,10 @@ export class PostComponent {
       : (bodyStyleOverflow.overflow = 'inherit');
       this.postService.getPostComments(this.post.id).subscribe((post: Post) => {
         console.log(post.comments);
-        if(post.comments == undefined || post.comments?.length > 0  ){
+        if(post.comments != undefined && post.comments.length > 0  ){
             this.commentsPost = post.comments;
+        } else {
+          this.commentsPost = [];
         }
       });
     }

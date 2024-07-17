@@ -1,21 +1,16 @@
 <div *ngIf="commentVisible">
-    <div class="commentBackground" (click)="closeModal()">
+  <div class="commentBackground" (click)="closeModal()"></div>
+  <div class="commentModal" >
+    <div class="comment" *ngFor="let comment of comments">
+      <section class="commentUser">
+        <img src="https://picsum.photos/24" alt="" />
+        <h3>
+          {{ handleUserName(comment.userId) }}
+        </h3>
+      </section>
+      <section>
+          {{ comment.text }}
+      </section>
     </div>
-    <div class="commentModal" *ngIf="comments"  >
-        <div class="comment" *ngFor="let comment of comments;">
-            <section class="commentUser">
-            <img src="https://picsum.photos/24" alt="">
-            <h3>
-                {{handleUserName(comment.userId)}}
-            </h3>
-        </section>
-        <section >
-            <li  *ngFor="let comment of comments;">
-                {{comment.text}}
-            </li>
-        </section>
-    </div>
-       <div class="space"></div>
-       <div class="space"></div>
-    </div>
+  </div>
 </div>
