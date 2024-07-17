@@ -22,7 +22,7 @@ export class PostsService {
     return this.http.get<Post>(`${this.apiUrl}/${id}`);
   }
   
-  getPostComments(id: string): Observable<Post>{
+  getComments(id: string): Observable<Post>{
     return this.http.get<Post>(`${this.apiUrl}/${id}?_embed=comments`);
   }
   

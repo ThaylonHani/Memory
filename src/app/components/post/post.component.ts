@@ -6,6 +6,7 @@ import { UsersDbService } from '../../services/userDb/users-db.service';
 import { PostsService } from '../../services/posts/posts.service';
 import { User } from '../../models/user.model';
 import { CommentModalComponent } from '../comment-modal/comment-modal.component';
+import { CommentService } from '../../services/comments/comment.service';
 @Component({
   selector: 'app-post',
   standalone: true,
@@ -16,7 +17,8 @@ import { CommentModalComponent } from '../comment-modal/comment-modal.component'
 export class PostComponent {
   constructor(
     private userService: UsersDbService,
-    private postService: PostsService
+    private postService: PostsService,
+    private commentService: CommentService
   ) {}
   like: boolean = true;
   comments: boolean = false;
@@ -85,8 +87,7 @@ export class PostComponent {
     this.comments
       ? (bodyStyleOverflow.overflow = 'hidden')
       : (bodyStyleOverflow.overflow = 'inherit');
-      this.postService.getPostComments(this.post.id).subscribe((post: Post) => {
-        console.log(post.comments);
+      this.postService.getComments(this.post.id).subscribe((post: Post) => {
         if(post.comments != undefined && post.comments.length > 0  ){
             this.commentsPost = post.comments;
         } else {

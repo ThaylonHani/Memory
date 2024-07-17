@@ -8,11 +8,11 @@
     left: 0;
     right: 0;
 }
-.commentModal, .notComments {
+.commentModal{
     position:  fixed;
     justify-self: center;
     width: 80%;
-    height: 60vh;
+    height: 70vh;
     bottom: 0;
     right: 0;
     left: 0;
@@ -45,5 +45,31 @@
     font-weight: lighter;
 }
 span {
+    color: #f5f5f5;
+}
+.commentInput {
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #373444;
+    height: 3rem;
+    width: 80%;
+    bottom: 0;
+}
+.commentInput input {
+    width: 60%;
+    padding: 0.5rem;
+    background-color: transparent;
+    border: 2px solid #f5f5f5;
+    border-radius: 0.3rem;
+    color: #f5f5f5;
+}
+#sendIcon{
+    width: 100%;
+}
+.commentInput button {
+    background-color: transparent;
+    cursor: pointer;
     color: #f5f5f5;
 }

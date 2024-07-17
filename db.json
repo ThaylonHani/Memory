@@ -82,8 +82,10 @@
   "comments": [
     {
       "id": "1",
+      "name": "Thaylo",
+      "photoUrl": "https://picsum.photos/64",
       "userId": "0.254418946105164",
-      "text" : "amei esse lugar, devemos ir mais vezes.",
+      "text": "amei esse lugar, devemos ir mais vezes.",
       "postId": "3"
     }
   ]

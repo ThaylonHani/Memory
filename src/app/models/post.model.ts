@@ -9,8 +9,10 @@ export interface Post {
 }
 
 export type CommentPost = {
-  id: string;
+  id?: string;
   userId: string;
+  name:string;
+  photoUrl:string;
   text: string;
   postId: string;
 };
