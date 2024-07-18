@@ -26,6 +26,7 @@ export class PostComponent {
   userPage: User = JSON.parse(localStorage.getItem('user')!);
   usersList!: userRoom[];
   commentsPost?: CommentPost[];
+  errImage: boolean = false;
 
   userName!: string;
   userPhoto!: string;
@@ -35,6 +36,7 @@ export class PostComponent {
   ngOnInit() {
     this.handleUser();
     this.handleLike(this.post);
+    this.handleNoPhoto();
   }
 
   handleLike(post: Post): void {
@@ -46,6 +48,17 @@ export class PostComponent {
           undefined;
       this.usersList = pst.likes ? pst.likes : [];
     });
+  }
+
+  handleNoPhoto() {
+    if(!this.post.content){
+      setTimeout(() => {
+        if(!this.post.content){
+          document.getElementById("imageLoading")!.style.display = "none";
+          this.errImage = true;
+        }
+      },3000)
+    }
   }
 
   handleLikeClick(post: Post): void {

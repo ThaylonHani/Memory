@@ -34,7 +34,7 @@
   height: 30rem;
 }
 
-.post .photo.noPhoto {
+.post .photo.noPhoto , #imageLoadingErr {
   position: relative;
   content: '';
   align-items: center;
@@ -58,6 +58,35 @@
 .photo.noPhoto::after{
   border-left-color: #f5f5f5;
   animation: load 1s infinite linear;
+}
+
+#imageLoadingErr span{
+  position: absolute;
+  color: #f5f5f5;
+  top: 40%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  width: 100%;
+}
+
+#imageLoadingErr::after, #imageLoadingErr::before{
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  content: '';
+  background-color: #f5f5f5;
+}
+#imageLoadingErr::after{
+  transform: rotate(45deg);
+}
+#imageLoadingErr::before{
+  transform: rotate(-45deg);
 }
 
 .post #post-menu {

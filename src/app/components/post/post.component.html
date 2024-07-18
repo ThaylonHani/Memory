@@ -5,7 +5,10 @@
   </section>
   <section id="post-content">
     <img src="{{post.content}}" alt="" *ngIf="post.content" class="photo">
-   <div *ngIf="!post.content" class="photo noPhoto"></div>
+   <div id="imageLoading" *ngIf="!post.content" class="photo noPhoto"></div>
+   <div id="imageLoadingErr" *ngIf="errImage" class="photo" title="Erro ao carregar imagem">
+    <span>imagem não carregada</span>
+   </div>
   </section>
   <section id="post-menu">
    <button (click)="handleLikeClick(post)" class="button-post">

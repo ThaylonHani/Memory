@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { PostComponent } from '../post/post.component';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { RoomsService } from '../../services/rooms/rooms.service';
 import { CommonModule } from '@angular/common';
 import { Post } from '../../models/post.model';
-
 @Component({
   selector: 'app-room-page',
   standalone: true,
@@ -13,25 +12,31 @@ import { Post } from '../../models/post.model';
   styleUrl: './room-page.component.css'
 })
 export class RoomPageComponent {
-  constructor(private route: ActivatedRoute, private roomService: RoomsService) {
+  constructor(private route: ActivatedRoute, private roomService: RoomsService, private router: Router) {
     this.getRoomInfo();
+    this.roomNotExists();
   }
 
   roomId: string = this.route.snapshot.params['id'];
   roomName!: string;
   roomPhoto?: string;
   roomPosts?: Post[];
-  ngOnInit() {}
-
-
+  
   getRoomInfo():void {
     this.roomService.getRoomPosts(this.roomId).subscribe((room) =>
-    {
+      {
       this.roomName = room.name;
       this.roomPhoto = room.photo;
       this.roomPosts = room.posts;
     }
     );
+  }
+  roomNotExists() {
+    setTimeout(() => {
+      if(this.roomName == null && this.roomPhoto == null && this.roomPhoto == null){
+        this.router.navigateByUrl("/rooms");
+      }
+    },200)
   }
 
 }
