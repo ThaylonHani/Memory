@@ -27,6 +27,7 @@ export class PostComponent {
   usersList!: userRoom[];
   commentsPost?: CommentPost[];
   errImage: boolean = false;
+  comment?: CommentPost;
 
   userName!: string;
   userPhoto!: string;
@@ -37,6 +38,7 @@ export class PostComponent {
     this.handleUser();
     this.handleLike(this.post);
     this.handleNoPhoto();
+    this.showCommentInPost();
   }
 
   handleLike(post: Post): void {
@@ -48,6 +50,12 @@ export class PostComponent {
           undefined;
       this.usersList = pst.likes ? pst.likes : [];
     });
+  }
+
+  showCommentInPost(){
+    this.postService.getComments(this.post.id).subscribe((post) => {
+      this.comment = post.comments![0];
+    })
   }
 
   handleNoPhoto() {
