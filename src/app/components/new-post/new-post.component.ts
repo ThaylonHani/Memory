@@ -20,7 +20,7 @@ export class NewPostComponent {
   
   ngOnInit() {
     this.formPost = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      description: new FormControl('', []),
     });
   }
 

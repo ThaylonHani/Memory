@@ -2,15 +2,10 @@
     <form id="formPost" [formGroup]="formPost" (submit)="handlePost()">
       <section class="createPost" *ngIf="!postModal">
         <div class="inputBox">
-          <input type="text" required [(ngModel)]="inputPostDescription" formControlName="name" title="Nome da sala" /> <i>Room Name</i>
-        </div>
-      </section>
-      <section class="postModal" *ngIf="postModal" >
-        <div class="inputBox">
-          <input type="text" required [(ngModel)]="inputPostDescription" formControlName="name" /> <i>Id room</i>
+          <input type="file" required [(ngModel)]="inputPostDescription" formControlName="name" title="Foto" /> <i>Foto</i>
         </div>
         <div class="inputBox">
-          <input type="text" required formControlName="password" /> <i>Password room</i>
+          <input type="text" [(ngModel)]="inputPostDescription" formControlName="description" title="Descrição do post" /> <i>Descrição</i>
         </div>
       </section>
       <section class="modalButtonsAction">
