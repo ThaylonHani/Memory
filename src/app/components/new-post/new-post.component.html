@@ -1,0 +1,26 @@
+<div class="createRoomModal ">
+    <form id="formPost" [formGroup]="formPost" (submit)="handlePost()">
+      <section class="createPost" *ngIf="!postModal">
+        <div class="inputBox">
+          <input type="text" required [(ngModel)]="inputPostDescription" formControlName="name" title="Nome da sala" /> <i>Room Name</i>
+        </div>
+      </section>
+      <section class="postModal" *ngIf="postModal" >
+        <div class="inputBox">
+          <input type="text" required [(ngModel)]="inputPostDescription" formControlName="name" /> <i>Id room</i>
+        </div>
+        <div class="inputBox">
+          <input type="text" required formControlName="password" /> <i>Password room</i>
+        </div>
+      </section>
+      <section class="modalButtonsAction">
+        <button class="actionButton"  type="submit" [disabled]="!formPost.valid && !postModal" [title]="formPost.valid ? postModal ? 'Botão de entrar na sala ' : 'Botão de criar sala'  : 'Preencha corretamente os campos' " >
+          {{postModal ? 'Entrar' : 'Criar'}}
+        </button>
+        <button (click)="handleCloseModal.emit(false)">
+          Voltar
+        </button>
+      </section>
+    </form>
+  </div>
+  

@@ -4,10 +4,11 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { RoomsService } from '../../services/rooms/rooms.service';
 import { CommonModule } from '@angular/common';
 import { Post } from '../../models/post.model';
+import { NewPostComponent } from "../new-post/new-post.component";
 @Component({
   selector: 'app-room-page',
   standalone: true,
-  imports: [PostComponent, CommonModule, RouterLink, RoomPageComponent],
+  imports: [PostComponent, CommonModule, RouterLink, RoomPageComponent, NewPostComponent],
   templateUrl: './room-page.component.html',
   styleUrl: './room-page.component.css'
 })
@@ -17,6 +18,7 @@ export class RoomPageComponent {
     this.roomNotExists();
   }
 
+  createPost: boolean = false;
   roomId: string = this.route.snapshot.params['id'];
   roomName!: string;
   roomPhoto?: string;
@@ -37,6 +39,23 @@ export class RoomPageComponent {
         this.router.navigateByUrl("/rooms");
       }
     },200)
+  }
+
+  closeModal(event: boolean){
+    let bodyStyleOverflow = document.body.style;
+    this.createPost = event;
+      this.createPost
+        ? (bodyStyleOverflow.overflow = 'hidden')
+        : (bodyStyleOverflow.overflow = 'inherit');
+    
+  }
+
+  openModal(){
+    this.createPost = true;
+    let bodyStyleOverflow = document.body.style;
+      this.createPost
+        ? (bodyStyleOverflow.overflow = 'hidden')
+        : (bodyStyleOverflow.overflow = 'inherit');
   }
 
 }
