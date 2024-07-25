@@ -1,6 +1,6 @@
 <div class="post" id="{{post.id}}">
   <section id="post-profile">
-    <img src="{{userPhoto}}" alt="">
+    <img src="{{userPhoto}}" alt="" *ngIf="userPhoto">
     <h3>{{userName}}</h3>
   </section>
   <section id="post-content">

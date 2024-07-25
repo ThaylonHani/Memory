@@ -16,10 +16,11 @@ export class NewPostComponent {
   formPost!: FormGroup;
   postModal: boolean = false;
   inputPostDescription: string = '';
-
+  inputPostContent: string = '';
   
   ngOnInit() {
     this.formPost = new FormGroup({
+      content: new FormControl('', [Validators.required]),
       description: new FormControl('', []),
     });
   }

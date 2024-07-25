@@ -1,17 +1,16 @@
-.createRoomModal{
-    display: flex;
-    position: static;
-    top: 4rem;
-    width: 90vw;
-    height: 10rem;
-    min-height: 80vh;
-    max-height: 80vh;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 0.3rem;
-    background-color: #15141a;
-    overflow: hidden;
-  }
+:host(){
+  position: fixed;
+  display: flex;
+  background-color: #15141a;
+  width: 90vw;
+  min-height: 80vh;
+  max-height: 80vh;
+  top: 6rem;
+  z-index: 10;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.3rem;
+}
   .create{
     background-color: rgba(4, 41, 64, 0.7);
   }
@@ -47,11 +46,31 @@
     height: 60%;
     gap: 1.5rem;
   }
-  
+  #content {
+    display: none;
+  }
+  .post-content{
+    color: #fff;
+    text-align: center;
+  }
+  .inputBox label {
+    width: fit-content;
+    align-self: center;
+    justify-self:center ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+  }
   .inputBox
   {
+    display: flex;
+    flex-direction:column ;
+    justify-content: center;
     position: relative;
     width: 100%;
+    gap: 0.5rem;
   }
   .inputBox input
   {

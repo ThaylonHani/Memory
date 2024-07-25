@@ -94,6 +94,10 @@
   gap: 1rem;
   width: 90%;
 }
+#post-profile img{
+ width: 32px;
+ height: 32px;
+}
 .button-post {
   display: flex;
   align-items: center;
