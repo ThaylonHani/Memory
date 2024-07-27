@@ -53,16 +53,17 @@
 
   <form id="changePassModal" *ngIf="changePassModal" [formGroup]="formPass">
     <div class="inputBox">
-      <input type="password" required formControlName="oldPass"/> <i>Last password</i>
+      <input type="password" required formControlName="oldPass" [(ngModel)]="inputOldPass"/> <i>Last password</i>
     </div>
     <div class="inputBox">
-      <input type="password" required formControlName="newPass" title="A senha deve conter ao menos uma letra maiúscula, algum sinal (!@#$%) e algum dígito(1-9)."/> <i>New password</i>
+      <input type="password" required formControlName="newPass" [(ngModel)]="inputNewPass" title="A senha deve conter ao menos uma letra maiúscula, algum sinal (!@#$%) e algum dígito(1-9)."/> <i>New password</i>
     </div>
     <div class="inputBox">
-      <input type="password" required formControlName="confirmNewPass"/> <i>Confirm password</i>
+      <input type="password" required formControlName="confirmNewPass" [(ngModel)]="inputConfirmNewPass"/> <i>Confirm password</i>
     </div>
     <div class="buttons-container-modal">
-      <button class="buttons-modal"  title="Trocar de senha" (click)="changePassModal">
+      <!-- [disabled]="!formPass.valid" -->
+      <button class="buttons-modal"  title="Trocar de senha" (click)="changePassword()">
         Confirm
       </button>
       <button type="button" class="buttons-modal" (click)="handleChangePasswordModal()">

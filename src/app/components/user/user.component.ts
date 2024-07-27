@@ -26,6 +26,9 @@ export class UserComponent {
   user: User = JSON.parse(localStorage.getItem('user')!);
   formPass!: FormGroup;
 
+  inputOldPass: string = "";
+  inputNewPass: string = "";
+  inputConfirmNewPass: string = "";
 
   ngOnInit() {
     this.handlePass();
@@ -95,10 +98,20 @@ export class UserComponent {
   }
   
   changePassword(){
-    const {oldPass, newPass, confirmPass} = this.formPass.value;
-    const pass = this.cryptoService.decipher(this.user.idToken, this.user.name);
-    const handlePass = this.cryptoService.confirmCipher(this.user.idToken, pass, this.user.name);
-    console.log(handlePass);
+    let {oldPass, newPass, confirmNewPass} = this.formPass.value;
+    const handlePass = this.cryptoService.confirmCipher(this.user.idToken, oldPass, this.user.name);
+    if(handlePass){
+      if(newPass == confirmNewPass){
+        const cypherPass = this.cryptoService.setCipher(confirmNewPass,this.user.name);
+        this.userService.editPass(this.user.id, cypherPass);
+        alert("Senha alterada!");
+        this.logService.clearUser();
+      } else {
+        alert("Nova senha errada.")
+      }
+    } else {
+      alert("Senha errada");
+    }
   }
 
   handleLogOut(): void {

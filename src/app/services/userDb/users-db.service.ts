@@ -29,9 +29,13 @@ export class UsersDbService {
   editPhoto(photo: string | ArrayBuffer | null, userId: string) {
     this.http.patch(this.apiUrl + `/${userId}`, { "photoUrl": `${photo}` }).subscribe((user) => console.log(user));
   }
-
+  
   getUserById(id: string): Observable<User> {
     return this.http.get<User>(this.apiUrl + `/${id}`);
   }
-
+  
+  editPass(userId: string, cypherPass: string ){
+    this.http.patch(this.apiUrl + `/${userId}`, { "idToken": `${cypherPass}` }).subscribe((user) => console.log(user));
+  }
+  
 }

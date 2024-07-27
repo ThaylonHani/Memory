@@ -15,11 +15,11 @@ export class LoginUserService {
   apiUrl = `${environment.api}/users`;
 
   setUser(user: User) {
-    const userR: userRoom = {
-      id : user.id,
-      name : user.name,
-      photoUrl : user.photoUrl
-    }
+    // const userR: userRoom = {
+    //   id : user.id,
+    //   name : user.name,
+    //   photoUrl : user.photoUrl
+    // }
     if (user != null && user != undefined) {
       localStorage.removeItem('user');
       localStorage.removeItem('token');
