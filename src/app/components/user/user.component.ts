@@ -5,11 +5,12 @@ import { LoginUserService } from '../../services/loginUser/login-user.service';
 import { CryptoService } from '../../services/crypto/crypto.service';
 import { Component } from '@angular/core';
 import { UsersDbService } from '../../services/userDb/users-db.service';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [CommonModule, RouterModule, RouterLink],
+  imports: [CommonModule, RouterModule, RouterLink, FormsModule, ReactiveFormsModule],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
 })
@@ -23,9 +24,16 @@ export class UserComponent {
   pass: string = '';
   changePassModal: boolean = false;
   user: User = JSON.parse(localStorage.getItem('user')!);
+  formPass!: FormGroup;
+
 
   ngOnInit() {
     this.handlePass();
+    this.formPass = new FormGroup({
+      oldPass: new FormControl('', [Validators.required]),
+      newPass: new FormControl('', [Validators.required, Validators.pattern('(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}')]),
+      confirmNewPass: new FormControl('', [])
+    });
   }
 
   handlePass(): void {
@@ -84,6 +92,13 @@ export class UserComponent {
 
   handleChangePasswordModal() {
     this.changePassModal = !this.changePassModal;
+  }
+  
+  changePassword(){
+    const {oldPass, newPass, confirmPass} = this.formPass.value;
+    const pass = this.cryptoService.decipher(this.user.idToken, this.user.name);
+    const handlePass = this.cryptoService.confirmCipher(this.user.idToken, pass, this.user.name);
+    console.log(handlePass);
   }
 
   handleLogOut(): void {

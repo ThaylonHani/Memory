@@ -26,7 +26,7 @@ export class NewPostComponent {
   }
 
   handlePost(): void {
-   
+
   }
   
 }
