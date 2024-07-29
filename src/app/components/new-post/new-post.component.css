@@ -49,6 +49,10 @@
   #content {
     display: none;
   }
+  #viewImg{
+    width: 64px;
+    height: 64px;
+  }
   .post-content{
     color: #fff;
     text-align: center;

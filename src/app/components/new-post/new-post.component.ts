@@ -17,7 +17,7 @@ export class NewPostComponent {
   postModal: boolean = false;
   inputPostDescription: string = '';
   inputPostContent: string = '';
-  
+  contentPhoto: string | ArrayBuffer | null = null;
   ngOnInit() {
     this.formPost = new FormGroup({
       content: new FormControl('', [Validators.required]),
@@ -27,6 +27,21 @@ export class NewPostComponent {
 
   handlePost(): void {
 
+  }
+  handlePhoto() {
+    const photoInput = <HTMLInputElement>document.getElementById('content');
+    const reader = new FileReader();
+    const file = photoInput.files![0];
+    reader.readAsDataURL(file as Blob);
+    reader.onloadend = () => {
+      let imageType = file.type;
+      let imageSize = file.size;
+      const allowedImageMatch =
+      imageType != 'image/jpeg' &&
+      imageType != 'image/jpg' &&
+      imageType != 'image/png';
+      this.contentPhoto = reader.result;
+    };
   }
   
 }
