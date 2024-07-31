@@ -26,8 +26,9 @@ export class PostsService {
     return this.http.get<Post>(`${this.apiUrl}/${id}?_embed=comments`);
   }
   
-  setPost(body: Post): void{
-    this.http.post<Post>(`${this.apiUrl}?_embed=users`, body);
+  setPost(body: Post): Observable<Post>{
+    // console.log(body);
+    return this.http.post<Post>(`${this.apiUrl}?_embed=users`, body);
   }
 
   likePost(post: Post, user: userRoom[]): Observable<Post>{

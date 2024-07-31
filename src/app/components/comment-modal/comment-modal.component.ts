@@ -20,7 +20,7 @@ export class CommentModalComponent {
   @Output() modalVisible = new EventEmitter<boolean>;
   @Input() commentVisible :boolean = false ;
   @Input() comments? : CommentPost[];
-  @Input() postId! : string;
+  @Input() postId! : string | undefined;
   user : userRoom = JSON.parse(localStorage.getItem('user')!);
   comment: string = "";
   closeModal() {
@@ -33,10 +33,10 @@ export class CommentModalComponent {
       name: this.user.name,
       photoUrl: this.user.photoUrl || "https://picsum.photos/64",
       text: this.comment,
-      postId: this.postId,
+      postId: this.postId!,
   }).subscribe(() => {
     this.comment = "";
-    this.postService.getComments(this.postId).subscribe((post) => {
+    this.postService.getComments(this.postId!).subscribe((post) => {
       this.comments = post.comments
     })
   });

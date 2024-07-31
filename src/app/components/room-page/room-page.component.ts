@@ -47,7 +47,7 @@ export class RoomPageComponent {
       this.createPost
         ? (bodyStyleOverflow.overflow = 'hidden')
         : (bodyStyleOverflow.overflow = 'inherit');
-    
+   this.getRoomInfo(); 
   }
 
   openModal(){

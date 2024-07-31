@@ -42,7 +42,7 @@ export class PostComponent {
   }
 
   handleLike(post: Post): void {
-    this.postService.getPost(post.id).subscribe((pst) => {
+    this.postService.getPost(post.id!).subscribe((pst) => {
       this.like =
         pst.likes?.findIndex((user: userRoom) => user.id == this.userPage.id) !=
           -1 &&
@@ -53,7 +53,7 @@ export class PostComponent {
   }
 
   showCommentInPost(){
-    this.postService.getComments(this.post.id).subscribe((post) => {
+    this.postService.getComments(this.post.id!).subscribe((post) => {
       this.comment = post.comments![0];
     })
   }
@@ -75,7 +75,7 @@ export class PostComponent {
       name: this.userPage.name,
       photoUrl: this.userPage.photoUrl,
     };
-    this.postService.getPost(post.id).subscribe((pst) => {
+    this.postService.getPost(post.id!).subscribe((pst) => {
       this.usersList = pst.likes ? pst.likes : [];
     });
     if (!this.like) {
@@ -86,7 +86,7 @@ export class PostComponent {
     } else {
       let id: number | undefined;
       setTimeout(() => {
-        this.postService.getPost(post.id).subscribe((pst) => {
+        this.postService.getPost(post.id!).subscribe((pst) => {
           id = pst.likes?.findIndex((user: userRoom) => {
             return user.id == this.userPage.id;
           });
@@ -108,7 +108,7 @@ export class PostComponent {
     this.comments
       ? (bodyStyleOverflow.overflow = 'hidden')
       : (bodyStyleOverflow.overflow = 'inherit');
-      this.postService.getComments(this.post.id).subscribe((post: Post) => {
+      this.postService.getComments(this.post.id!).subscribe((post: Post) => {
         if(post.comments != undefined && post.comments.length > 0  ){
             this.commentsPost = post.comments;
         } else {
