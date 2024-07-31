@@ -4,7 +4,6 @@
     transform: rotate(360deg);
   }
 }
-
 .post{
   display: flex;
   flex-direction: column;
@@ -32,6 +31,28 @@
 .post #post-content .photo{
   width: 20rem;
   height: 30rem;
+  object-fit: contain;
+  background-color: #222121;
+}
+
+#description{
+  align-self: baseline;
+  margin-left: 2.3rem;
+  color: #f5f5f5;
+  white-space: nowrap;
+  display: flex;
+}
+
+#description-content {
+  width: 9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#description-button {
+  background-color: transparent;
+  color: #f5f5f5;
+  margin-top: 0.2rem;
+  font-size: x-small;
 }
 
 .post .photo.noPhoto , #imageLoadingErr {
@@ -93,6 +114,7 @@
   display: flex;
   gap: 1rem;
   width: 90%;
+  align-items: end;
 }
 #post-profile img{
  width: 32px;
