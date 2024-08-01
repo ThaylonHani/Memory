@@ -36,25 +36,41 @@
 }
 
 #description{
-  align-self: baseline;
-  margin-left: 2.3rem;
+  position: relative;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
   color: #f5f5f5;
   display: flex;
 }
 
 .description-content {
   white-space: nowrap;
-  width: 9rem;
+  width: 80%;
+  text-align: justify;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 #description-button {
   background-color: transparent;
+  position: absolute;
+  bottom: -1rem;
+  right: 4.5rem;
   color: #f5f5f5;
   justify-self: end;
-  align-self: flex-end;
-  margin-top: 0.2rem;
+  align-self: baseline;
+  padding: 0.3rem;
+  /* margin-top: 0.2rem; */
   font-size: x-small;
+  width:fit-content ;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+#description-button:hover{
+color: wheat;
+opacity: 1;
 }
 
 .post .photo.noPhoto , #imageLoadingErr {
