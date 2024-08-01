@@ -77,6 +77,13 @@
           "photoUrl": ""
         }
       ]
+    },
+    {
+      "id": "0ca1",
+      "content": "https://picsum.photos/200/300",
+      "description": "Postando qualquer coisa que seja maior que o comentãrio necessário, para abrir a descrição e testar se está funcionando.",
+      "roomId": "e607",
+      "userId": "0.254418946105164"
     }
   ],
   "comments": [

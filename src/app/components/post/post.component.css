@@ -39,11 +39,11 @@
   align-self: baseline;
   margin-left: 2.3rem;
   color: #f5f5f5;
-  white-space: nowrap;
   display: flex;
 }
 
-#description-content {
+.description-content {
+  white-space: nowrap;
   width: 9rem;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -51,6 +51,8 @@
 #description-button {
   background-color: transparent;
   color: #f5f5f5;
+  justify-self: end;
+  align-self: flex-end;
   margin-top: 0.2rem;
   font-size: x-small;
 }

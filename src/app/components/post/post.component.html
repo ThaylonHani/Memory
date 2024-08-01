@@ -11,10 +11,10 @@
    </div>
   </section>
   <section id="description">
-    <p id="description-content">
+    <p #descriptionContent class="description-content">
       {{post.description}}
     </p>
-      <button id="description-button" *ngIf="post.description!.length > 20">descrição</button>
+      <button id="description-button" (click)="handleDescription()" *ngIf="post.description!.length > 20">descrição</button>
   </section>
   <section id="post-menu">
    <button (click)="handleLikeClick(post)" class="button-post">
