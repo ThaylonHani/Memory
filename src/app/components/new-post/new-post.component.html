@@ -1,3 +1,4 @@
+<div id="postBackground" (click)="handleCloseModal.emit(false)"></div>
     <form id="formPost" [formGroup]="formPost" (submit)="handlePost()">
       <section class="createPost" *ngIf="!postModal">
         <div class="inputBox">

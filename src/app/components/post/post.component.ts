@@ -104,12 +104,10 @@ export class PostComponent {
     let descriptionStyle = this.descriptionContent.nativeElement.style; 
     if(!this.descriptionOpen){
       descriptionStyle.whiteSpace = "inherit";
-      // descriptionStyle.width = "20rem";
       descriptionStyle.height = "100%";
       descriptionStyle.overflow = "scroll";
     } else {
       descriptionStyle.whiteSpace = "nowrap";
-      // descriptionStyle.width = "80%";
       descriptionStyle.height = "inherit";
       descriptionStyle.overflow = "hidden";
     }
