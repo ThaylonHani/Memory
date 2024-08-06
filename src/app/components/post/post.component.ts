@@ -33,6 +33,8 @@ export class PostComponent {
   userPhoto!: string;
 
   @ViewChild("descriptionContent") descriptionContent!: ElementRef<HTMLParagraphElement>;
+  @ViewChild("postMenuModal") postMenuModal!: ElementRef<HTMLParagraphElement>;
+
 
   @Input() post!: Post;
 
@@ -138,6 +140,10 @@ export class PostComponent {
 
   }
 
+  handleMenuPost(): void{
+    this.postMenuModal.nativeElement.style.display = 'flex';
+  }
+  
   handleUser() {
     this.userService.getUserById(this.post.userId).subscribe((user) => {
       this.userName = user.name;
