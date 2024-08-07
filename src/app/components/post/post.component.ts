@@ -1,6 +1,6 @@
 import { userRoom } from './../../models/user.model';
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { CommentPost, Post } from '../../models/post.model';
 import { UsersDbService } from '../../services/userDb/users-db.service';
 import { PostsService } from '../../services/posts/posts.service';
@@ -35,7 +35,7 @@ export class PostComponent {
   @ViewChild("descriptionContent") descriptionContent!: ElementRef<HTMLParagraphElement>;
   @ViewChild("postMenuModal") postMenuModal!: ElementRef<HTMLParagraphElement>;
 
-
+  @Output() deletePost  = new EventEmitter<boolean>();
   @Input() post!: Post;
 
   ngOnInit() {
@@ -155,4 +155,10 @@ export class PostComponent {
       this.userPhoto = user.photoUrl;
     });
   }
+
+  handleDeletePost(postId: string) {
+    this.postService.deletePost(postId);
+    this.deletePost.emit(true);
+  }
+  
 }

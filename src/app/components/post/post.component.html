@@ -12,7 +12,7 @@
       </button>
       <ul class="menu-modal" #postMenuModal>
         <li>Editar</li>
-        <li>Excluir</li>
+        <li (click)="handleDeletePost(post.id!)">Excluir</li>
       </ul>
     </div>
       

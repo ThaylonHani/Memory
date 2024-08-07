@@ -14,6 +14,6 @@
     </div>
     <app-new-post [roomId]="roomId" *ngIf="createPost" (handleCloseModal)="closeModal($event)"/>
   <div id="room-main">
-      <app-post *ngFor="let post of roomPosts" [post]="post"/>
+      <app-post *ngFor="let post of roomPosts" [post]="post" (deletePost)="handleDeletePost($event)"/>
   </div>
 </div>

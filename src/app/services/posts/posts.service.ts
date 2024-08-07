@@ -39,4 +39,8 @@ export class PostsService {
     return this.http.patch<Post>(`${this.apiUrl}/${post.id}`, { likes: user });
   }
 
+  deletePost(postId:string): void {
+    this.http.delete<Post>(`${this.apiUrl}/${postId}`).subscribe((post) => console.log(`Post ${post.id} excluido`));
+  }
+  
 }

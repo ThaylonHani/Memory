@@ -58,4 +58,8 @@ export class RoomPageComponent {
         : (bodyStyleOverflow.overflow = 'inherit');
   }
 
+  handleDeletePost(event: boolean){
+    event ? this.getRoomInfo() : null;
+  }
+
 }
