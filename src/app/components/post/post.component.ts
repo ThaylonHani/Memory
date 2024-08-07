@@ -141,7 +141,12 @@ export class PostComponent {
   }
 
   handleMenuPost(): void{
-    this.postMenuModal.nativeElement.style.display = 'flex';
+    let display = this.postMenuModal.nativeElement.style.display;
+    if(display == 'flex'){
+      this.postMenuModal.nativeElement.style.display = 'none';
+    } else {
+      this.postMenuModal.nativeElement.style.display = 'flex'
+    }
   }
   
   handleUser() {

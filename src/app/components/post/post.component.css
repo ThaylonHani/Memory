@@ -28,21 +28,50 @@
 
 .post #post-profile .post-menu{
   background-color: transparent;
+  z-index: 5;
   position: relative;
-  color: #f5f5f5;
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: fit-content;
   cursor: pointer;
   justify-self: center ;
   text-align: center;
 }
 
+.post-menu button {
+  color: #f5f5f5;
+  background-color: transparent;
+} 
+
 .menu-modal{
   display: none;
+  flex-direction: column;
   position: absolute;
+  padding: 0.3rem;
   left: 0;
-  bottom: 0;
+  right: 0;
+  bottom: -6.3rem;
+  width: 6rem;
+  height: 6rem;
+  align-items: center;
+  justify-content: center;
+  border-radius:0.2rem;
+  list-style: none;
   background-color: #222121;
+}
+.menu-modal li {
+  border-radius: 0.2rem ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  height: 100%;
+  transition: all 0.3s linear;
+}
+.menu-modal li:hover {
+  background-color: rgba(245, 245, 245, 0.8);
 }
 
 .post #post-profile img {
