@@ -87,20 +87,22 @@ export class PostComponent {
       setTimeout(() => {
         this.postService.likePost(post, [...this.usersList, userR]).subscribe();
       }, 100);
-    } else {
-      let id: number | undefined;
-      setTimeout(() => {
-        this.postService.getPost(post.id!).subscribe((pst) => {
-          id = pst.likes?.findIndex((user: userRoom) => {
-            return user.id == this.userPage.id;
-          });
+    } 
+    else {
+      let id: number;
+      this.postService.getPost(post.id!).subscribe((pst) => {
+        id = pst.likes!.findIndex((user: userRoom) => {
+          return user.id == this.userPage.id;
         });
-        this.usersList = this.usersList.splice(id!, 1);
+      });
+      setTimeout(() => {
+        this.usersList.splice(id, 1);
         this.postService.unLikePost(post, this.usersList).subscribe();
         this.like = !this.like;
       }, 100);
     }
-  }
+  // }
+}
 
   handleDescription(): void {
     let descriptionStyle = this.descriptionContent.nativeElement.style; 
