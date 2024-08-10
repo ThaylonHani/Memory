@@ -22,7 +22,7 @@ export class PostComponent {
   ) {}
   like: boolean = true;
   comments: boolean = false;
-  userPage: User = JSON.parse(localStorage.getItem('user')!);
+  userPage: User = JSON.parse(sessionStorage.getItem('user')!);
   usersList!: userRoom[];
   commentsPost?: CommentPost[];
   errImage: boolean = false;
@@ -58,6 +58,7 @@ export class PostComponent {
 
   showCommentInPost(){
     this.postService.getComments(this.post.id!).subscribe((post) => {
+      console.log(post.comments)
       this.comment = post.comments![0];
     })
   }

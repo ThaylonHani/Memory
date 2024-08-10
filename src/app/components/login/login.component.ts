@@ -48,7 +48,7 @@ export class LoginComponent {
   err: boolean = false;
 
   ngOnInit() {
-    if (localStorage.getItem('user') != null) this.router.navigate(['rooms']);
+    if (sessionStorage.getItem('user') != null) this.router.navigate(['rooms']);
   }
 
   handleLoginGoogle() {
@@ -75,11 +75,11 @@ export class LoginComponent {
       this.inputPass = '';
     }
     setTimeout(() => {
-
-      if (localStorage.getItem('user') != null) {
-        const user: User = JSON.parse(localStorage.getItem('user')!);
+      if (sessionStorage.getItem('user') != null) {
+        const user: User = JSON.parse(sessionStorage.getItem('user')!);
         const decrypt = this.crypto.decipher(user.idToken, user.name);
         const crypto = this.crypto.setCipher(this.inputPass, this.inputName);
+        
         if (this.crypto.confirmCipher(crypto, decrypt, this.inputName)) {
           this.router.navigate(['rooms']);
         } else {

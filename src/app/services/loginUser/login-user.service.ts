@@ -15,25 +15,17 @@ export class LoginUserService {
   apiUrl = `${environment.api}/users`;
 
   setUser(user: User) {
-    // const userR: userRoom = {
-    //   id : user.id,
-    //   name : user.name,
-    //   photoUrl : user.photoUrl
-    // }
     if (user != null && user != undefined) {
-      localStorage.removeItem('user');
-      localStorage.removeItem('token');
-      localStorage.setItem('token', user.idToken);
-      localStorage.setItem('user', JSON.stringify(user));
-      setTimeout(() => {
-        this.clearUser();
-      }, 60000 * 60);
+      sessionStorage.removeItem('user');
+      sessionStorage.removeItem('token');
+      sessionStorage.setItem('token', user.idToken);
+      sessionStorage.setItem('user', JSON.stringify(user));
     }
   }
 
   clearUser() {
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('user');
+    sessionStorage.removeItem('token');
     this.router.navigate(['login']);
   }
 

@@ -25,7 +25,7 @@ export class NewPostComponent {
   inputPostContent: string = '';
   contentPhoto!: string | ArrayBuffer | null;
   postBody!: Post;  
-  user: userRoom = JSON.parse(localStorage.getItem("user")!);
+  user: userRoom = JSON.parse(sessionStorage.getItem("user")!);
 
   ngOnInit() {
     this.formPost = new FormGroup({

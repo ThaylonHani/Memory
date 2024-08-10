@@ -5,7 +5,7 @@ export const userAuthenticatedGuard: CanActivateFn = (route, state) => {
 
   const router = inject(Router);
 
-  const localData = localStorage.getItem('token');
+  const localData = sessionStorage.getItem('token');
   if ( localData != null) {
     return true
   }

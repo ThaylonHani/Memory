@@ -23,7 +23,7 @@ export class UserComponent {
 
   pass: string = '';
   changePassModal: boolean = false;
-  user: User = JSON.parse(localStorage.getItem('user')!);
+  user: User = JSON.parse(sessionStorage.getItem('user')!);
   formPass!: FormGroup;
 
   inputOldPass: string = "";
@@ -31,6 +31,7 @@ export class UserComponent {
   inputConfirmNewPass: string = "";
 
   ngOnInit() {
+    console.log(this.user.photoUrl)
     this.handlePass();
     this.formPass = new FormGroup({
       oldPass: new FormControl('', [Validators.required]),
@@ -62,7 +63,6 @@ export class UserComponent {
     reader.onloadend = () => {
       let imageType = file.type;
       let imageSize = file.size;
-      console.log(file);
       const allowedImageMatch =
         imageType != 'image/jpeg' &&
         imageType != 'image/jpg' &&

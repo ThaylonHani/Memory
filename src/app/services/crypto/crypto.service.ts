@@ -24,6 +24,8 @@ export class CryptoService {
   confirmCipher(encrypt : string, decrypt : string, name : string): boolean {
     const newEncrypt = this.decipher(encrypt, name);
     const userDecrypt = decrypt;
+
+    
     if (newEncrypt === userDecrypt) {
       return true;
     } else {

@@ -31,7 +31,7 @@ export class CreateRoomModalComponent {
   inputRoomName: string = '';
   formRoom!: FormGroup;
   enterRoom: boolean = false;
-  user: User = JSON.parse(localStorage.getItem('user')!);
+  user: User = JSON.parse(sessionStorage.getItem('user')!);
 
   ngOnInit() {
     this.formRoom = new FormGroup({

@@ -27,7 +27,12 @@ export class UsersDbService {
   }
 
   editPhoto(photo: string | ArrayBuffer | null, userId: string) {
-    this.http.patch(this.apiUrl + `/${userId}`, { "photoUrl": `${photo}` }).subscribe((user) => console.log(user));
+    this.http.get<User>(this.apiUrl + `${userId}?_embed=comments`).subscribe((comment) => console.log(comment));
+    this.http.patch<User>(this.apiUrl + `/${userId}`, { "photoUrl": `${photo}` }).subscribe((user) => {
+      if(user != null){
+        this.loginService.setUser(user);
+      }
+    });
   }
   
   getUserById(id: string): Observable<User> {

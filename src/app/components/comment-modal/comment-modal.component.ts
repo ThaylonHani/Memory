@@ -21,7 +21,7 @@ export class CommentModalComponent {
   @Input() commentVisible :boolean = false ;
   @Input() comments? : CommentPost[];
   @Input() postId! : string | undefined;
-  user : userRoom = JSON.parse(localStorage.getItem('user')!);
+  user : userRoom = JSON.parse(sessionStorage.getItem('user')!);
   comment: string = "";
   closeModal() {
     this.modalVisible.emit(false);
@@ -31,7 +31,7 @@ export class CommentModalComponent {
     this.commentService.newComment({
       userId: this.user.id,
       name: this.user.name,
-      photoUrl: this.user.photoUrl || "https://picsum.photos/64",
+      photoUrl: this.user.photoUrl,
       text: this.comment,
       postId: this.postId!,
   }).subscribe(() => {
