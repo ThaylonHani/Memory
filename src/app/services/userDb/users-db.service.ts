@@ -1,10 +1,11 @@
 import { Injectable, inject } from '@angular/core';
-import { User } from '../../models/user.model';
+import { User, userRoom } from '../../models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { LoginUserService } from '../loginUser/login-user.service';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
+import { CommentPost } from '../../models/post.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class UsersDbService {
    loginService = inject(LoginUserService);
 
   apiUrl = `${environment.api}/users`;
-
+  commentsUrl = `${environment.api}/comments`;
 
   postUser(body : User) : void {
     const user = this.http.post<User>(this.apiUrl, body).subscribe((usr) => usr != null ? usr : null);
@@ -27,7 +28,13 @@ export class UsersDbService {
   }
 
   editPhoto(photo: string | ArrayBuffer | null, userId: string) {
-    this.http.get<User>(this.apiUrl + `${userId}?_embed=comments`).subscribe((comment) => console.log(comment));
+    let commentsId: String[] = [];
+    this.http.get<CommentPost[]>(this.commentsUrl + `?userId=${userId}` ).subscribe((comments: CommentPost[]) => comments.forEach((comment) => commentsId.push(comment.id as string)));
+    setTimeout(() => {
+      commentsId.forEach((commentId) => {
+        this.http.patch<CommentPost>(this.commentsUrl + `/${commentId}`, {"photoUrl": `${photo}`} ).subscribe((comment) => console.log(comment));
+      })
+    },100)
     this.http.patch<User>(this.apiUrl + `/${userId}`, { "photoUrl": `${photo}` }).subscribe((user) => {
       if(user != null){
         this.loginService.setUser(user);
