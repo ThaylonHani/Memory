@@ -74,6 +74,7 @@
     text-align: center;
   }
   .inputBox label {
+    cursor: pointer;
     width: fit-content;
     align-self: center;
     justify-self:center ;
