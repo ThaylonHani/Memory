@@ -16,9 +16,7 @@ export class HeaderRoomsComponent {
 
   bypass: boolean = false;
   modal: boolean = false;
-  handleMenu() {
-    this.router.navigate(['user']);
-  }
+  
   handleBypass() {
     this.bypass = !this.bypass;
   }

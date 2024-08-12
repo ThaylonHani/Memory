@@ -31,7 +31,6 @@ export class UserComponent {
   inputConfirmNewPass: string = "";
 
   ngOnInit() {
-    console.log(this.user.photoUrl)
     this.handlePass();
     this.formPass = new FormGroup({
       oldPass: new FormControl('', [Validators.required]),
