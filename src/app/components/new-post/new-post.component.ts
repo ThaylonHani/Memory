@@ -40,7 +40,7 @@ export class NewPostComponent {
       content: String(this.contentPhoto),
       description: description ,
       roomId: this.roomId,
-      userId: this.user.id,
+      userId: this.user.id!,
     }
     this.postService.setPost(this.postBody).subscribe(post => console.log(post));
     this.contentPhoto = "";

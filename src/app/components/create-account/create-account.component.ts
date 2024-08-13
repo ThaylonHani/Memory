@@ -93,7 +93,6 @@ export class CreateAccountComponent {
         } else {
           const separeteName = this.inputName.split(' ');
           this.dbService.postUser({
-            id: Math.random().toString(),
             idToken: this.crypto.setCipher(this.inputPass, this.inputName),
             name: this.inputName,
             email: this.inputEmail,

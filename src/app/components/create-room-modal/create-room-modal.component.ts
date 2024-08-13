@@ -66,7 +66,7 @@ export class CreateRoomModalComponent {
           photo: '',
           users: [
             {
-              id: this.user.id,
+              id: this.user.id!,
               name: this.user.name,
               photoUrl: this.user.photoUrl,
             },

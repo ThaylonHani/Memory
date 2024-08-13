@@ -29,7 +29,7 @@ export class CommentModalComponent {
 
   sendComment() {
     this.commentService.newComment({
-      userId: this.user.id,
+      userId: this.user.id!,
       name: this.user.name,
       photoUrl: this.user.photoUrl,
       text: this.comment,

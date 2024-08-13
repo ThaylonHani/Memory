@@ -72,7 +72,7 @@ export class UserComponent {
       } else if (allowedImageMatch) {
         alert('Apenas arquivo do tipo .jpeg/.jpg e .png são permitidas');
       } else {
-        this.userService.editPhoto(reader.result, this.user.id);
+        this.userService.editPhoto(reader.result, this.user.id!);
       }
     };
   }
@@ -102,7 +102,7 @@ export class UserComponent {
     if(handlePass){
       if(newPass == confirmNewPass){
         const cypherPass = this.cryptoService.setCipher(confirmNewPass,this.user.name);
-        this.userService.editPass(this.user.id, cypherPass);
+        this.userService.editPass(this.user.id!, cypherPass);
         alert("Senha alterada!");
         this.logService.clearUser();
       } else {
