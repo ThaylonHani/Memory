@@ -121,6 +121,7 @@
 .login-modal .signin .content h2
 {
   user-select: none;
+  cursor: pointer;
   transition: all 0.5s linear;
   background: linear-gradient(to right, #F25116, #BF4B21);
   background-clip: text;

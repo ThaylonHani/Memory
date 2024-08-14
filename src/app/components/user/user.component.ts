@@ -55,6 +55,7 @@ export class UserComponent {
   }
 
   handlePhoto() {
+    console.log(this.user)
     const photoInput = <HTMLInputElement>document.getElementById('file');
     const reader = new FileReader();
     const file = photoInput.files![0];

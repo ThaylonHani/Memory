@@ -63,8 +63,8 @@ class="createAccount-form"
       logo_alignment="center"
     >
     </asl-google-signin-button>
-    <div id="create-btn" *ngIf="loading; else createButton">
-      <span>Carregando</span>
+    <div id="create-btn" >
+      <span *ngIf="loading; else createButton" id="loading"></span>
     </div>
     <ng-template #createButton>
       <button type="submit" [disabled]="!this.formUser.valid" id="create-btn">Create</button>

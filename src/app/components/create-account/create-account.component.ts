@@ -88,18 +88,15 @@ export class CreateAccountComponent {
   }
 
   createAccount(): void {
-    console.log(this.inputEmail)
-    console.log(this.inputName)
-    console.log(this.inputPass)
-    console.log(this.inputConfirmPass)
     this.confirmEmailExist(this.inputEmail);
     this.loading = true;
     setTimeout(() => {
-      if (this.userEmailExist) {
+      if (!this.userEmailExist) {
         this.emailErr = this.userEmailExist;
         alert('Já existe um usuário com o email');
         this.loading = false;
-      } else {
+      } 
+      else {
         this.passwordErr = this.confirmPassword(this.inputPass, this.inputConfirmPass);
         this.nameErr = this.inputName.length < 5;
         if (this.emailErr || this.nameErr || this.passwordErr) {
