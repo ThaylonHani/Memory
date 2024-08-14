@@ -1,57 +1,73 @@
-<div class="createAccount-container">
-  <div class="createAccount-content">
-    <section class="createAccount-intro">
-      <h1>
-        Welcome to memories
-      </h1>
-      <strong>
-        Reviva momentos, compartilhe memórias: seu álbum de fotos digitais
-      </strong>
-    </section>
-
-    <form class="createAccount-form" [formGroup]="formUser" (ngSubmit)="createAccount()" >
-
-        <label for="emailUser">
-          Email:
-          <p *ngIf="emailErr" class="inputError" >
-            Email invalid
-          </p>
-        </label>
-        <input type="text" name="emailUser" id="emailUser" placeholder="Enter your email" [(ngModel)] = "inputEmail" formControlName="email"  >
-
-        <label for="nameUser">
-          Name:
-          <p *ngIf="nameErr" class="inputError">
-            Name invalid
-            </p>
-        </label>
-        <input type="text" name="nameUser" id="nameUser" placeholder="Enter your name" [(ngModel)] = "inputName" formControlName="name">
-
-        <label for="passwordUser">
-          Password:
-        </label>
-        <input type="password" name="passwordUser" id="passwordUser" placeholder="Enter your password" [(ngModel)] = "inputPass" formControlName="password">
-
-        <label for="passwordConfirmUser">
-          Confirm password:
-          <p *ngIf="passwordErr" class="inputError">
-          password wrong
-          </p>
-        </label>
-        <input type="password" name="passwordConfirmUser" id="passwordConfirmUser" placeholder="Confirm your password" [(ngModel)] = "inputConfirmPass" formControlName="confirmPassword">
-        <div class="createAccount-buttons" >
-          <a href="login" id="exit-btn">Signin</a>
-          <asl-google-signin-button (click)="handleCreateWithGoogle()" type="standard" size="medium" shape="pill" text="signup_with" [width]="200" theme="filled_blue" logo_alignment="center" >
-          </asl-google-signin-button>
-          <div id="create-btn" *ngIf="loading; else createButton">
-            <span>Carregando</span>
-          </div>
-          <ng-template #createButton>
-            <button type="submit" id="create-btn" >
-              Create
-            </button>
-          </ng-template>
-        </div>
-    </form>
+<form
+class="createAccount-form"
+[formGroup]="formUser"
+(ngSubmit)="createAccount()"
+>
+<h1 (click)="handleShowSignup()">
+  Signup
+</h1>
+  <p *ngIf="emailErr" class="inputError">Email invalid</p>
+  <div class="inputBox">
+    <input
+      type="text"
+      name="emailUser"
+      id="emailUser"
+      required
+      [(ngModel)]="inputEmail"
+      formControlName="email"
+    />
+    <i>Email</i>
   </div>
-</div>
+  <div class="inputBox">
+    <input
+      type="text"
+      name="nameUser"
+      id="nameUser"
+      required
+      [(ngModel)]="inputName"
+      formControlName="name"
+    />
+    <i>Name</i>
+  </div>
+  <div class="inputBox">
+    <input
+      type="password"
+      name="passwordUser"
+      id="passwordUser"
+      required
+      [(ngModel)]="inputPass"
+      formControlName="password"
+    />
+    <i>Password</i>
+  </div>
+  <div class="inputBox">
+    <input
+      type="text"
+      name="passwordConfirmUser"
+      id="passwordConfirmUser"
+      required
+      [(ngModel)]="inputConfirmPass"
+      formControlName="confirmPass"
+    />
+    <i>Confirm password</i>
+  </div>
+  <div class="createAccount-buttons">
+    <asl-google-signin-button
+      (click)="handleCreateWithGoogle()"
+      type="standard"
+      size="medium"
+      shape="pill"
+      text="signup_with"
+      [width]="200"
+      theme="filled_blue"
+      logo_alignment="center"
+    >
+    </asl-google-signin-button>
+    <div id="create-btn" *ngIf="loading; else createButton">
+      <span>Carregando</span>
+    </div>
+    <ng-template #createButton>
+      <button type="submit" id="create-btn">Create</button>
+    </ng-template>
+  </div>
+</form>

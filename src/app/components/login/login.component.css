@@ -97,10 +97,12 @@
 {
   position: absolute;
   width: 400px;
+  height: 70vh;
   background: linear-gradient(to bottom right, #0F2027, #203A43, #2C5364);
   z-index: 1000;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: top;
   align-items: center;
   padding: 40px;
   border-radius: 4px;

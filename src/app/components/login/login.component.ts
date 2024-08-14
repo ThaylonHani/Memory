@@ -11,6 +11,7 @@ import { User } from '../../models/user.model';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CryptoService } from '../../services/crypto/crypto.service';
+import { CreateAccountComponent } from "../create-account/create-account.component";
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ import { CryptoService } from '../../services/crypto/crypto.service';
     HttpClientModule,
     GoogleSigninButtonModule,
     FormsModule,
-  ],
+    CreateAccountComponent
+],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -46,6 +48,8 @@ export class LoginComponent {
   user?: SocialUser | User;
 
   err: boolean = false;
+
+  heightSignup:string = '10%'; 
 
   ngOnInit() {
     if (sessionStorage.getItem('user') != null) this.router.navigate(['rooms']);
@@ -108,5 +112,9 @@ export class LoginComponent {
         this.router.navigate(['create_account']);
       }
     }, 1000);
+  }
+  showLogin(height: string){
+    console.log(height)
+    this.heightSignup = height;
   }
 }

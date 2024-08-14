@@ -1,37 +1,35 @@
-body {
-  background-color: #0F2027;
+:host{
   display: flex;
+  align-items: top;
   justify-content: center;
-  align-items: center;
-}
-.createAccount-container {
-  display: flex;
   width: 100%;
-  height: 100%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-.createAccount-container h1 {
-  background: linear-gradient(to right, #F25116, #BF4B21);
-  background-clip: text;
-  color: transparent ;
-}
-.createAccount-container strong {
-  color: #8C4130;
-  width: 75%;
-  text-align: center;
+  height: 10%;
+  overflow: hidden;
+  position: absolute;
+  background: linear-gradient(to bottom right, #0F2027, #203A43, #2C5364);
+  bottom: 0;
+  border-top-left-radius: 0.5rem ;
+  border-top-right-radius: 0.5rem ;
+  border-top: 1px solid wheat;
 }
 .createAccount-form {
-  display: flex;
+  display: inline-block;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: baseline;
+  align-items: baseline;
   gap: 1rem;
-  width: 90%;
+  width: 100%;
   margin-top : 10px;
-
+  padding: 0 0.3rem;
+}
+.createAccount-form h1 {
+  cursor: pointer;
+  text-align: center;
+    background: linear-gradient( to right, #F25116, #BF4B21);
+      background-clip: border-box;
+    background-clip: text;
+    color: transparent;
+  
 }
 .createAccount-form label {
   align-self: baseline ;
@@ -43,29 +41,9 @@ body {
   width: 100%;
   border: none;
   border-radius: 0.3rem;
+  margin-top: 0.3rem ;
+  margin-bottom: 0.3rem ;
   padding: 1rem;
-}
-.createAccount-content {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem 0;
-  justify-content: space-between;
-  align-items: center;
-  width: 80%;
-  margin-top: 1rem;
-  border-radius: 8px;
-  box-shadow:  0 2px 10px 5px #000000;
-  align-self: center;
-
-}
-.createAccount-intro {
-  display: flex;
-  flex-direction: column;
-  margin-top: 1.5rem;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
 }
 .createAccount-buttons{
   display: flex;
@@ -102,4 +80,52 @@ body {
 }
 label {
   position: relative;
+}
+.inputBox
+{
+  position: relative;
+  width: 100%;
+}
+.inputBox input
+{
+  position: relative;
+  width: 100%;
+  background: #333;
+  border: none;
+  outline: none;
+  padding: 25px 10px 7.5px;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1em;
+}
+.inputBox i
+{
+  position: absolute;
+  left: 0;
+  padding: 15px 10px;
+  font-style: normal;
+  color: #aaa;
+  transition: 0.5s;
+  pointer-events: none;
+}
+input:focus ~ i,input:valid ~ i
+{
+  transform: translateY(-7.5px);
+  font-size: 0.8em;
+  color: #fff;
+}
+.inputBox input[type="submit"]
+{
+  padding: 10px;
+  background: #0f0;
+  color: #000;
+  font-weight: 600;
+  font-size: 1.35em;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+input[type="submit"]:active
+{
+  opacity: 0.6;
 }

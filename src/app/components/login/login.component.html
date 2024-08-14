@@ -2,7 +2,7 @@
   <section class="login-modal">
     <div class="signin">
       <div class="content">
-        <h2>Cadastre-se</h2>
+        <h2 (click)="showLogin('10%')">Login</h2>
         <div class="form">
           <strong *ngIf="err" id="errMessage">
             Username or password incorrect!
@@ -14,9 +14,7 @@
           <div class="inputBox">
             <input type="password" required [(ngModel)] = 'inputPass' /> <i>Password</i>
           </div>
-          <div class="links">
-            <a class="signup" href="create_account">Signup</a>
-          </div>
+         
 
           <section class="buttons-container">
             <div *ngIf="loadingWithGoogle; else notLoadingGoogle" class="loading-container">
@@ -44,6 +42,7 @@
           </section>
         </div>
       </div>
+      <app-create-account handleHeightHost="heightSignup" />
     </div>
   </section>
 </div>

@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output} from '@angular/core';
 import { User } from '../../models/user.model';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import {
@@ -30,13 +30,18 @@ import { LoginUserService } from '../../services/loginUser/login-user.service';
   styleUrl: './create-account.component.css',
 })
 export class CreateAccountComponent {
+
+  @Input() handleHeightHost! : string;
+
   constructor(
     private dbService: UsersDbService,
     private authService: SocialAuthService,
     private crypto: CryptoService,
     private logService: LoginUserService
   ) {}
-
+  
+  @HostBinding('style.height') heightHost = this.handleHeightHost;
+  
   apiUrl = 'http://localhost:4000/users';
   passwordUser: string = '';
   users: User[] = [];
@@ -53,6 +58,8 @@ export class CreateAccountComponent {
   loading: boolean = false;
   googleLoading: boolean = false;
   formUser!: FormGroup;
+
+
 
   ngOnInit(): void {
     this.formUser = new FormGroup({
@@ -135,5 +142,8 @@ export class CreateAccountComponent {
     } else {
       return false;
     }
+  }
+  handleShowSignup(){
+    this.heightHost = '80%';
   }
 }
