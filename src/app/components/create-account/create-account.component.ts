@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, Output} from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output, SimpleChanges} from '@angular/core';
 import { User } from '../../models/user.model';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import {
@@ -31,8 +31,6 @@ import { LoginUserService } from '../../services/loginUser/login-user.service';
 })
 export class CreateAccountComponent {
 
-  @Input() handleHeightHost! : string;
-
   constructor(
     private dbService: UsersDbService,
     private authService: SocialAuthService,
@@ -40,8 +38,10 @@ export class CreateAccountComponent {
     private logService: LoginUserService
   ) {}
   
-  @HostBinding('style.height') heightHost = this.handleHeightHost;
-  
+  @Input() height!:string;
+  @Output() handleHeight = new EventEmitter<string>;
+  @HostBinding('style.height') idHost!:string;
+
   apiUrl = 'http://localhost:4000/users';
   passwordUser: string = '';
   users: User[] = [];
@@ -62,6 +62,7 @@ export class CreateAccountComponent {
 
 
   ngOnInit(): void {
+    this.idHost = this.height;
     this.formUser = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       name: new FormControl('', [
@@ -81,7 +82,16 @@ export class CreateAccountComponent {
     });
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    document.getElementById("signup")!.style.scale = this.height == '10%' ? '1' : '1.3';
+    this.idHost = this.height;
+  }
+
   createAccount(): void {
+    console.log(this.inputEmail)
+    console.log(this.inputName)
+    console.log(this.inputPass)
+    console.log(this.inputConfirmPass)
     this.confirmEmailExist(this.inputEmail);
     this.loading = true;
     setTimeout(() => {
@@ -144,6 +154,6 @@ export class CreateAccountComponent {
     }
   }
   handleShowSignup(){
-    this.heightHost = '80%';
+    this.handleHeight.emit("80%");
   }
 }

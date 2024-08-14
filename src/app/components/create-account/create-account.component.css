@@ -3,33 +3,35 @@
   align-items: top;
   justify-content: center;
   width: 100%;
-  height: 10%;
   overflow: hidden;
   position: absolute;
-  background: linear-gradient(to bottom right, #0F2027, #203A43, #2C5364);
+  background: linear-gradient(to right bottom , #03001e, #7303c0);
   bottom: 0;
-  border-top-left-radius: 0.5rem ;
-  border-top-right-radius: 0.5rem ;
-  border-top: 1px solid wheat;
+  border-top-left-radius: 10% ;
+  border-top-right-radius: 10% ;
+  transition: all 0.5s linear;
 }
 .createAccount-form {
-  display: inline-block;
   flex-direction: column;
   justify-content: baseline;
   align-items: baseline;
   gap: 1rem;
   width: 100%;
   margin-top : 10px;
-  padding: 0 0.3rem;
+  padding: 0 1rem;
+  
 }
 .createAccount-form h1 {
+  margin-bottom: 2rem;
+  transform: scale(1);
+  user-select: none;
   cursor: pointer;
   text-align: center;
     background: linear-gradient( to right, #F25116, #BF4B21);
       background-clip: border-box;
     background-clip: text;
     color: transparent;
-  
+  transition: all 0.5s linear;  
 }
 .createAccount-form label {
   align-self: baseline ;
@@ -62,6 +64,10 @@
   font-weight: bold;
   border: none;
 }
+#create-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
 #exit-btn {
   background: linear-gradient(to right, #F25116, #BF4B21);
   background-clip:text ;
@@ -93,6 +99,7 @@ label {
   background: #333;
   border: none;
   outline: none;
+  padding: 25px 10px 7.5px;
   padding: 25px 10px 7.5px;
   border-radius: 4px;
   color: #fff;

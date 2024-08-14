@@ -21,10 +21,14 @@ export class UsersDbService {
 
   postUser(body : User) : void {
     const user = this.http.post<User>(this.apiUrl, body).subscribe((usr) => usr != null ? usr : null);
-    if (user != null) {
-      this.loginService.setUser(body);
-      this.router.navigate(['']);
-    }
+    setTimeout(() => {
+      if (user != null) {
+        this.loginService.setUser(body);
+        this.router.navigate(['/rooms']);
+      } else {
+        this.router.navigate([''])
+      }
+    },100)
   }
 
   editPhoto(photo: string | ArrayBuffer | null, userId: string) {

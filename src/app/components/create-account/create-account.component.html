@@ -3,7 +3,7 @@ class="createAccount-form"
 [formGroup]="formUser"
 (ngSubmit)="createAccount()"
 >
-<h1 (click)="handleShowSignup()">
+<h1 id="signup" (click)="handleShowSignup()">
   Signup
 </h1>
   <p *ngIf="emailErr" class="inputError">Email invalid</p>
@@ -42,12 +42,12 @@ class="createAccount-form"
   </div>
   <div class="inputBox">
     <input
-      type="text"
+      type="password"
       name="passwordConfirmUser"
       id="passwordConfirmUser"
       required
       [(ngModel)]="inputConfirmPass"
-      formControlName="confirmPass"
+      formControlName="confirmPassword"
     />
     <i>Confirm password</i>
   </div>
@@ -67,7 +67,7 @@ class="createAccount-form"
       <span>Carregando</span>
     </div>
     <ng-template #createButton>
-      <button type="submit" id="create-btn">Create</button>
+      <button type="submit" [disabled]="!this.formUser.valid" id="create-btn">Create</button>
     </ng-template>
   </div>
 </form>

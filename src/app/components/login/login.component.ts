@@ -11,7 +11,7 @@ import { User } from '../../models/user.model';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CryptoService } from '../../services/crypto/crypto.service';
-import { CreateAccountComponent } from "../create-account/create-account.component";
+import { CreateAccountComponent } from '../create-account/create-account.component';
 
 @Component({
   selector: 'app-login',
@@ -21,8 +21,8 @@ import { CreateAccountComponent } from "../create-account/create-account.compone
     HttpClientModule,
     GoogleSigninButtonModule,
     FormsModule,
-    CreateAccountComponent
-],
+    CreateAccountComponent,
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -49,7 +49,7 @@ export class LoginComponent {
 
   err: boolean = false;
 
-  heightSignup:string = '10%'; 
+  signupHeight = '10%';
 
   ngOnInit() {
     if (sessionStorage.getItem('user') != null) this.router.navigate(['rooms']);
@@ -83,7 +83,7 @@ export class LoginComponent {
         const user: User = JSON.parse(sessionStorage.getItem('user')!);
         const decrypt = this.crypto.decipher(user.idToken, user.name);
         const crypto = this.crypto.setCipher(this.inputPass, this.inputName);
-        
+
         if (this.crypto.confirmCipher(crypto, decrypt, this.inputName)) {
           this.router.navigate(['rooms']);
         } else {
@@ -96,7 +96,7 @@ export class LoginComponent {
         this.inputName = '';
         this.inputPass = '';
       }
-    this.loading = false;
+      this.loading = false;
     }, 1000);
   }
 
@@ -113,8 +113,12 @@ export class LoginComponent {
       }
     }, 1000);
   }
-  showLogin(height: string){
-    console.log(height)
-    this.heightSignup = height;
+  showLogin() {
+    this.signupHeight = '10%';
+    document.getElementById("login")!.style.transform = "scale(1)";
+  }
+  showSignup(height: string) {
+    document.getElementById("login")!.style.transform = "scale(0.8)";
+    this.signupHeight = height;
   }
 }

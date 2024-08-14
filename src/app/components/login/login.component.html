@@ -2,7 +2,7 @@
   <section class="login-modal">
     <div class="signin">
       <div class="content">
-        <h2 (click)="showLogin('10%')">Login</h2>
+        <h2 id="login" (click)="showLogin()">Login</h2>
         <div class="form">
           <strong *ngIf="err" id="errMessage">
             Username or password incorrect!
@@ -42,7 +42,7 @@
           </section>
         </div>
       </div>
-      <app-create-account handleHeightHost="heightSignup" />
+      <app-create-account [height]="signupHeight" (handleHeight)="showSignup($event)" />
     </div>
   </section>
 </div>
