@@ -74,7 +74,8 @@ export class CreateAccountComponent {
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
-      ]),
+        Validators.pattern(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}/)      
+        ]),
       confirmPassword: new FormControl('', [
         Validators.required,
         Validators.minLength(8),

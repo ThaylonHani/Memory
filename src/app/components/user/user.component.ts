@@ -34,7 +34,7 @@ export class UserComponent {
     this.handlePass();
     this.formPass = new FormGroup({
       oldPass: new FormControl('', [Validators.required]),
-      newPass: new FormControl('', [Validators.required, Validators.pattern('(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}')]),
+      newPass: new FormControl('', [Validators.required, Validators.pattern(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}/)]),
       confirmNewPass: new FormControl('', [])
     });
   }
