@@ -18,10 +18,6 @@ export const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'create_account',
-    component: CreateAccountComponent,
-  },
-  {
     path: 'rooms',
     component: MemoriesRoomComponent,
     canActivate: [userAuthenticatedGuard],

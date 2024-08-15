@@ -34,7 +34,7 @@ export class LoginUserService {
     return this.http.get<User[]>(this.apiUrl + `/?name=${name}`);
   }
 
-  confirmEmail(email: string): Observable<User> {
-    return this.http.get<User>(this.apiUrl + `/?email=${email}`);
+  confirmEmail(email: string): Observable<User[]> {
+    return this.http.get<User[]>(this.apiUrl + `/?email=${email}`);
   }
 }

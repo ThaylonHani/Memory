@@ -91,7 +91,7 @@ export class CreateAccountComponent {
     this.confirmEmailExist(this.inputEmail);
     this.loading = true;
     setTimeout(() => {
-      if (!this.userEmailExist) {
+      if (this.userEmailExist) {
         this.emailErr = this.userEmailExist;
         alert('Já existe um usuário com o email');
         this.loading = false;
@@ -117,7 +117,8 @@ export class CreateAccountComponent {
           });
         }
       }
-    }, 500);
+    }, 1500);
+    this.loading = false;
   }
 
   handleCreateWithGoogle(): void {
@@ -137,7 +138,7 @@ export class CreateAccountComponent {
   async confirmEmailExist(email: string): Promise<void> {
     if (email.trim().length != 0) {
       this.logService.confirmEmail(email).subscribe((user) => {
-        this.userEmailExist = user != null && user.name != null
+        this.userEmailExist = user[0] != undefined && user[0].name != null;
       });
     } else {
       this.emailErr = true;
