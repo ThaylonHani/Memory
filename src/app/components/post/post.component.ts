@@ -7,10 +7,11 @@ import { PostsService } from '../../services/posts/posts.service';
 import { User } from '../../models/user.model';
 import { CommentModalComponent } from '../comment-modal/comment-modal.component';
 import { CommentService } from '../../services/comments/comment.service';
+import { EditPostComponent } from "../edit-post/edit-post.component";
 @Component({
   selector: 'app-post',
   standalone: true,
-  imports: [CommonModule, CommentModalComponent],
+  imports: [CommonModule, CommentModalComponent, EditPostComponent],
   templateUrl: './post.component.html',
   styleUrl: './post.component.css',
 })
@@ -34,6 +35,7 @@ export class PostComponent {
 
   @ViewChild("descriptionContent") descriptionContent!: ElementRef<HTMLParagraphElement>;
   @ViewChild("postMenuModal") postMenuModal!: ElementRef<HTMLParagraphElement>;
+  @ViewChild("editPostModal") editPostModal!: ElementRef<HTMLParagraphElement>;
 
   @Output() deletePost  = new EventEmitter<boolean>();
   @Input() post!: Post;

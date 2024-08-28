@@ -60,5 +60,6 @@
       {{comment.text}}
     </span>
   </div>
+  <app-edit-post #editPostModal/>
   <app-comment-modal *ngIf="commentsPost" [postId]="post.id" (modalVisible)="handleCloseModalComments($event)" [comments]="commentsPost" [commentVisible]="comments"/>
 </div>
