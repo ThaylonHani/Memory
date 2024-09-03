@@ -1,4 +1,4 @@
-<div id="memoris">
+<div id="memories" *ngIf="items.length > 0; else noRoom">
     <ul class="memories-content">
       <li *ngFor="let item of items" >
         <a routerLink="/rooms/{{item.id}}">
@@ -16,3 +16,11 @@
       </li>
     </ul>
 </div>
+<ng-template #noRoom id="noRoom">
+  <div id="memories-noRoom">
+
+    <h1 class="noRoom-text">
+      Você não está em nenhuma sala ainda, crie ou entre em alguma.
+    </h1>
+  </div>
+</ng-template>
