@@ -9,4 +9,6 @@ html, body{
   background: linear-gradient(to bottom right, #0F2027, #203A43, #2C5364) no-repeat;
   width: 100%;
   min-height: 100vh;
+  font-family: "Roboto Condensed", sans-serif;
+  font-optical-sizing: auto;
 }
