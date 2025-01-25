@@ -28,7 +28,7 @@
       </div>
     </section>
     <section class="modalButtonsAction">
-      <button class="actionButton"  type="submit" [disabled]="!formRoom.valid && !enterRoom" [title]="formRoom.valid ? enterRoom ? 'Botão de entrar na sala ' : 'Botão de criar sala'  : 'Preencha corretamente os campos' " >
+      <button class="actionButton"  type="submit"  [title]="formRoom.valid ? enterRoom ? 'Botão de entrar na sala ' : 'Botão de criar sala'  : 'Preencha corretamente os campos' " >
         {{enterRoom ? 'Entrar' : 'Criar'}}
       </button>
       <button (click)="handleCloseModal.emit(false)">

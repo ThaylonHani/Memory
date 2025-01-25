@@ -1,7 +1,7 @@
 import { RoomsService } from './../../services/rooms/rooms.service';
 import { CryptoService } from './../../services/crypto/crypto.service';
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, ErrorHandler, EventEmitter, Output } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -56,59 +56,68 @@ export class CreateRoomModalComponent {
 
   handleRooms(): void {
     let { name, password, confirmPassword } = this.formRoom.value;
-
-    password = this.cryptoService.setSha256(password);
-    if (!this.enterRoom) {
-      this.roomsService
-        .postRooms({
-          name: name,
-          pass: password,
-          photo: '',
-          users: [
-            {
-              id: this.user.id!,
-              name: this.user.name,
-              photoUrl: this.user.photoUrl,
-            },
-          ],
-        })
-        .subscribe((room) => {
-          if (room != null && room.id != null) {
-            this.router.navigate([`rooms/${room.id}`]);
-          }
-        });
-    } else {
-      let { name, password } = this.formRoom.value;
-      let usersList!: userRoom[];
-      let room!: enterRoom
+    try {
+      if(name.length < 3){
+        throw new Error('Nome precisa conter no mínimo 3 caracteres');
+      } else if (password < 8){
+        throw new Error('Senha precisa conter no mínimo 8 caracteres');
+      }
       password = this.cryptoService.setSha256(password);
-
-      this.roomsService
-        .getRoomId(name)
-        .subscribe((rooms) => {
-          room = rooms;
-          usersList = rooms.users;
-        });
-      setTimeout(() => {
-        if (room.pass == password) {
+      if (!this.enterRoom) {
           this.roomsService
-            .enterRoom({ id: name, pass: password }, [
-              ...usersList,
-              {
-                id: this.user.id,
-                name: this.user.name,
-                photoUrl: this.user.photoUrl,
-              },
-            ])
+            .postRooms({
+              name: name,
+              pass: password,
+              photo: '',
+              users: [
+                {
+                  id: this.user.id!,
+                  name: this.user.name,
+                  photoUrl: this.user.photoUrl,
+                },
+              ],
+            })
             .subscribe((room) => {
               if (room != null && room.id != null) {
                 this.router.navigate([`rooms/${room.id}`]);
               }
             });
-        } else {
-          alert("wrong password")
-        }
-      }, 200);
+      } else {
+        let { name, password } = this.formRoom.value;
+        let usersList!: userRoom[];
+        let room!: enterRoom
+        password = this.cryptoService.setSha256(password);
+  
+        this.roomsService
+          .getRoomId(name)
+          .subscribe((rooms) => {
+            room = rooms;
+            usersList = rooms.users;
+          });
+        setTimeout(() => {
+          if (room.pass == password) {
+            this.roomsService
+              .enterRoom({ id: name, pass: password }, [
+                ...usersList,
+                {
+                  id: this.user.id,
+                  name: this.user.name,
+                  photoUrl: this.user.photoUrl,
+                },
+              ])
+              .subscribe((room) => {
+                if (room != null && room.id != null) {
+                  this.router.navigate([`rooms/${room.id}`]);
+                }
+              });
+          } else {
+            alert("wrong password")
+          }
+        }, 200);
+      }
+    } catch (error : any ) {
+      alert(error.message);
     }
+   
   }
 }
